@@ -13,15 +13,7 @@
 
 Fast, minimal, precise, safe, atomic, and easy to use.
 
-**🔒 Out-of-the-box Typescript support**
-- Written in Typescript. No special configuration needed, and no plugins to install. 
-- Works great with [c8](https://github.com/bcoe/c8) for code coverage.
-- Handles compilation errors gracefully.
-
-**🛡 Defensive**
-- Uncaught errors and unhandled promise rejections will cause the test to fail.
-- Any spec files without tests, or tests without assertions, result in a failed test.
-- Strict and deep equality comparison by default.
+## Features
 
 **🚀 Fast & Reliable**
 - Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for best results._
@@ -29,11 +21,21 @@ Fast, minimal, precise, safe, atomic, and easy to use.
 - Minimal dependencies.
 
 **😀 Easy to Use**
-- Very simple [assertion API](docs/api.md). No need to learn a new language/DSL or framework.
+- Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
 - Built-in [powerful diff visualization tool](#visual-diff-tool) and clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
 - Clean stack traces with no extra noise.
+
+**🛡 Defensive**
+- Uncaught errors and unhandled promise rejections will cause the test to fail.
+- Any spec files without tests, or tests without assertions, result in a failed test.
+- Strict and deep equality comparison by default.
+
+**🔒 Out-of-the-box Typescript support**
+- No special configuration needed, and no plugins to install. 
+- Works great with [c8](https://github.com/bcoe/c8) for code coverage.
+- Handles compilation errors gracefully.
 
 # Quick Examples
 
