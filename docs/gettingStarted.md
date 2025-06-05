@@ -7,7 +7,7 @@ Using `kitest` is really easy! Here's a quick guide to get you started.
 ### 1. Install from npm along with peer dependencies
 
 ```console
-npm i -D kitest typescript ts-node c8 
+npm i -D @kitest/kitest typescript ts-node c8 
 ```
 
 - If you're not using Typescript, you can skip the `typescript` and `ts-node` packages.

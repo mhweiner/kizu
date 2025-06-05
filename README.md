@@ -40,7 +40,7 @@ Fast, minimal, precise, safe, atomic, and easy to use.
 # Quick Examples
 
 ```typescript
-import {test} from 'kitest';
+import {test} from '@kitest/kitest';
 
 // Basic test
 
