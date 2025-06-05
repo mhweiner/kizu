@@ -11,7 +11,7 @@
 
 **kitest** is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
 
-It emphasizes speed, clarity, safety, and minimal configuration.
+Fast, minimal, precise, safe, atomic, and easy to use.
 
 **🔒 Out-of-the-box Typescript support**
 - Written in Typescript. No special configuration needed, and no plugins to install. 
@@ -34,11 +34,6 @@ It emphasizes speed, clarity, safety, and minimal configuration.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
 - Clean stack traces with no extra noise.
-
-**✨ Modern Features**
-- Async/Await/Promise Support
-- Supports declarative and functional programming style
-- Great with AI tools like Copilot, ChatGPT, and others.
 
 # Quick Examples
 
