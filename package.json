@@ -1,7 +1,7 @@
 {
   "name": "kitest",
   "version": "0.0.0-semantic-release",
-  "description": "A simple and opinionated Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.",
+  "description": "An easy-to-use, fast, and defensive Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.",
   "license": "MIT",
   "main": "./dist/index.js",
   "bin": {
