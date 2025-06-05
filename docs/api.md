@@ -52,7 +52,7 @@ Asserts that the given function throws an error, matching either:
 #### Example
 
 ```ts
-import { test } from 'hoare';
+import { test } from 'kitest';
 
 function mustBe42(num: number): void {
   if (num !== 42) throw new Error('expected 42');

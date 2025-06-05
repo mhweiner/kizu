@@ -1,7 +1,5 @@
 # Inspiration & Philosophy
 
-**Hoare** is named after [Sir Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare), whose [Hoare Triple](https://en.wikipedia.org/wiki/Hoare_logic) formalized how we specify software behavior: pre-condition, execution, and post-condition. This idea underpins what we now think of as unit testing.
-
 After years of building [safety-critical](https://en.wikipedia.org/wiki/Safety-critical_system) and mission-critical software in healthcare, finance, and e-commerce, I’ve come to value simple, readable, and maintainable tests — not just for correctness, but for the design clarity they demand.
 
 > “Inside every large program, there is a small program trying to get out.”  

@@ -1,11 +1,11 @@
 {
-  "name": "hoare",
+  "name": "kitest",
   "version": "0.0.0-semantic-release",
   "description": "A simple and opinionated Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.",
   "license": "MIT",
   "main": "./dist/index.js",
   "bin": {
-    "hoare": "bin/cli.js"
+    "kitest": "bin/cli.js"
   },
   "types": "dist/index.d.ts",
   "files": [
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhweiner/hoare.git"
+    "url": "git+https://github.com/mhweiner/kitest.git"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -26,7 +26,7 @@
     "lint": "eslint ./ --ext .js,.ts",
     "build": "rm -rf ./dist && tsc"
   },
-  "homepage": "https://github.com/mhweiner/hoare",
+  "homepage": "https://github.com/mhweiner/kitest",
   "keywords": [
     "unit test",
     "ts unit test",

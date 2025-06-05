@@ -1,21 +1,17 @@
 <picture>
-    <source srcset="docs/hoare-logo.svg" media="(prefers-color-scheme: dark)">
-    <source srcset="docs/hoare-logo-dark.svg" media="(prefers-color-scheme: light)">
-    <img src="docs/hoare-logo-dark.svg" alt="Logo" style="margin: 0 0 10px" size="250">
+    <source srcset="docs/kitest-logo-light.svg" media="(prefers-color-scheme: light)">
+    <source srcset="docs/kitest-logo-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="docs/kitest-logo-light.svg" alt="Logo" style="margin: 0 0 10px" size="250">
 </picture>
 
----
-
-[![build status](https://github.com/mhweiner/hoare/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/hoare/actions)
+[![build status](https://github.com/mhweiner/kitest/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/kitest/actions)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![AutoRel](https://img.shields.io/badge/v2-AutoRel?label=AutoRel&labelColor=0ab5fc&color=grey&link=https%3A%2F%2Fgithub.com%2Fmhweiner%2Fautorel)](https://github.com/mhweiner/autorel)
 
-**Hoare** is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
+**kitest** is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
 
 It emphasizes speed, clarity, safety, and minimal configuration.
-
-Named after [Sir Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare), the inventor of the [Hoare Triple](https://en.wikipedia.org/wiki/Hoare_logic) — a foundational idea in formal reasoning and software correctness.
 
 **🔒 Out-of-the-box Typescript support**
 - Written in Typescript. No special configuration needed, and no plugins to install. 
@@ -47,7 +43,7 @@ Named after [Sir Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare), the inve
 # Quick Examples
 
 ```typescript
-import {test} from 'hoare';
+import {test} from 'kitest';
 
 // Basic test
 
@@ -96,7 +92,7 @@ test('fetchData()', async (assert) => {
 
 # Getting Started
 
-To install and get started with `hoare`, see our [Getting Started](docs/gettingStarted.md) guide.
+To install and get started with `kitest`, see our [Getting Started](docs/gettingStarted.md) guide.
 
 # Examples
 
@@ -105,7 +101,7 @@ See the [examples](examples) and [src](src) folders for more examples.
 # Support, feedback, and contributions
 
 - Star this repo if you like it!
-- Submit an [issue](https://github.com/mhweiner/hoare/issues) with your problem, feature request or bug report
+- Submit an [issue](https://github.com/mhweiner/kitest/issues) with your problem, feature request or bug report
 - Issue a PR against `main` and request review. Make sure all tests pass and coverage is good.
 - Write about this project in your blog, tweet about it, or share it with your friends!
 
@@ -120,7 +116,7 @@ See the [examples](examples) and [src](src) folders for more examples.
 
 Aeroview is a lightning-fast, developer-friendly, AI-powered logging IDE. Get started for free at [https://aeroview.io](https://aeroview.io).
 
-Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20hoare).
+Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20kitest).
 
 # Other useful libraries
 

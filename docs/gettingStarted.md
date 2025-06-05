@@ -1,13 +1,13 @@
 # Getting Started
 
-Using `hoare` is simple, we promise. Here's a quick guide to get you started.
+Using `kitest` is really easy! Here's a quick guide to get you started.
 
 ## Installation & Setup
 
 ### 1. Install from npm along with peer dependencies
 
 ```console
-npm i -D hoare typescript ts-node c8 
+npm i -D kitest typescript ts-node c8 
 ```
 
 - If you're not using Typescript, you can skip the `typescript` and `ts-node` packages.
@@ -51,7 +51,7 @@ Example for Typescript with `c8`:
 
 ```json
 {
-    "test": "c8 hoare 'src/**/*.spec.@(ts|js)' && c8 report -r text -r html"
+    "test": "c8 kitest 'src/**/*.spec.@(ts|js)' && c8 report -r text -r html"
 }
 ```
 
@@ -65,18 +65,18 @@ Simplest example without `c8`:
 
 ```json
 {
-    "test": "hoare 'src/**/*.spec.@(ts|js)'"
+    "test": "kitest 'src/**/*.spec.@(ts|js)'"
 }
 ```
 
-You can customize the `hoare` command to your situation. The string in quotes is a [glob](https://github.com/terkelg/tiny-glob).
+You can customize the `kitest` command to your situation. The string in quotes is a [glob](https://github.com/terkelg/tiny-glob).
 
-## Running hoare via `npx`
+## Running kitest via `npx`
 
 ```bash
 # Run all tests in the src folder with names ending in .spec.ts or .spec.js (glob)
-npx hoare 'src/**/*.spec.ts'
+npx kitest 'src/**/*.spec.ts'
 
 # a specific file
-npx hoare 'src/foo.spec.ts'
+npx kitest 'src/foo.spec.ts'
 ```
