@@ -13,7 +13,22 @@ export function calculateFinalResults(specFiles: string[], testResults: TestResu
             acc + (isTestPassing(test) ? 1 : 0)
         ), 0)
     ), 0);
+    const numAssertions = Object.values(testResults).reduce((acc, results) => (
+        acc + results.reduce((acc, test) => acc + test.assertions.length, 0)
+    ), 0);
+    const numSuccessfulAssertions = Object.values(testResults).reduce((acc, results) => (
+        acc + results.reduce((acc, test) => (
+            acc + test.assertions.reduce((acc, assertion) => acc + (assertion.pass ? 1 : 0), 0)
+        ), 0)
+    ), 0);
 
-    return {numFiles, numTests, numSuccessfulTests, filesWithNoTests};
+    return {
+        numFiles,
+        numTests,
+        numSuccessfulTests,
+        filesWithNoTests,
+        numAssertions,
+        numSuccessfulAssertions,
+    };
 
 }

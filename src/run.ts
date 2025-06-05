@@ -15,6 +15,8 @@ export type FinalResults = {
     numTests: number
     numSuccessfulTests: number
     filesWithNoTests: string[]
+    numAssertions: number
+    numSuccessfulAssertions: number
 };
 
 const status = ora();

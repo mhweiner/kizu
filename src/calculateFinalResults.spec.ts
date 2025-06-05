@@ -51,6 +51,8 @@ test('4 files, 2/5 tests pass, 1 file without tests, 1 test with error', (assert
         numTests: 5,
         numSuccessfulTests: 2,
         filesWithNoTests: ['./fake/d.ts'],
+        numAssertions: 5,
+        numSuccessfulAssertions: 3,
     });
 
 });

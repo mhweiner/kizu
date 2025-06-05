@@ -8,6 +8,8 @@ test('returns false if no files without tests, and all tests pass', (assert) => 
         numSuccessfulTests: 5,
         numTests: 5,
         filesWithNoTests: [],
+        numAssertions: 5,
+        numSuccessfulAssertions: 5,
     }));
 
 });
@@ -19,6 +21,8 @@ test('returns true if any files without tests', (assert) => {
         numSuccessfulTests: 5,
         numTests: 5,
         filesWithNoTests: ['./fake/a.spec.js'],
+        numAssertions: 5,
+        numSuccessfulAssertions: 5,
     }), 'passes if all tests pass');
 
 });
@@ -30,6 +34,8 @@ test('returns true if any tests failed', (assert) => {
         numSuccessfulTests: 5,
         numTests: 6,
         filesWithNoTests: [],
+        numAssertions: 6,
+        numSuccessfulAssertions: 5,
     }));
 
 });

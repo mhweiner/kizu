@@ -74,7 +74,18 @@ function printFailedAssertionDiag(assertion: Assertion) {
 export function printSummary(finalResults: FinalResults) {
 
     const successRate = finalResults.numSuccessfulTests / finalResults.numTests;
+    const assertionSuccessRate = finalResults.numSuccessfulAssertions / finalResults.numAssertions;
     const numFilesWithNoTests = finalResults.filesWithNoTests.length;
+
+    if (assertionSuccessRate === 1) {
+
+        log(kleur.bold().green(`${successSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
+
+    } else {
+
+        log(kleur.bold().red(`${failureSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
+
+    }
 
     if (successRate === 1) {
 
