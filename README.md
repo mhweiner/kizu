@@ -1,7 +1,7 @@
 <picture>
     <source srcset="docs/kizu-logo-light.svg" media="(prefers-color-scheme: light)">
     <source srcset="docs/kizu-logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="docs/kizu-logo-light.svg" alt="Logo" style="margin: 0 0 10px" size="250">
+    <img src="docs/kizu-logo-light.svg" alt="Logo">
 </picture>
 
 [![build status](https://github.com/mhweiner/kizu/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/kizu/actions)
