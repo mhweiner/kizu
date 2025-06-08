@@ -107,7 +107,7 @@ function filterStackTrace(stack: string) {
         /at Generator.next \(<anonymous>\)/,
         /at new Promise \(<anonymous>\)/,
         /assertions\/index.[ts|js]{2}/,
-        /\/kitest\/[src|dist]{3,4}\/test.[ts|js]{2}/,
+        /\/kizu\/[src|dist]{3,4}\/test.[ts|js]{2}/,
     ].reduce((combined, exp) => (
         new RegExp(`${combined.source}|${exp.source}`)
     ), new RegExp('a^'));
