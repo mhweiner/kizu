@@ -1,38 +1,39 @@
 <picture>
-    <source srcset="docs/kitest-logo-light.svg" media="(prefers-color-scheme: light)">
-    <source srcset="docs/kitest-logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="docs/kitest-logo-light.svg" alt="Logo" style="margin: 0 0 10px" size="250">
+    <source srcset="docs/kizu-logo-light.svg" media="(prefers-color-scheme: light)">
+    <source srcset="docs/kizu-logo-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="docs/kizu-logo-light.svg" alt="Logo" style="margin: 0 0 10px" size="250">
 </picture>
 
-[![build status](https://github.com/mhweiner/kitest/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/kitest/actions)
+[![build status](https://github.com/mhweiner/kizu/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/kizu/actions)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![AutoRel](https://img.shields.io/badge/v2-AutoRel?label=AutoRel&labelColor=0ab5fc&color=grey&link=https%3A%2F%2Fgithub.com%2Fmhweiner%2Fautorel)](https://github.com/mhweiner/autorel)
 
-**kitest** is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
+**kizu** is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
 
 Fast, minimal, precise, safe, atomic, and easy to use.
 
 ## Features
 
-**🚀 Fast & Reliable**
+### **🚀 Fast & Reliable**
 - Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for best results._
 - Optimized for speed and simplicity.
 - Minimal dependencies.
 
-**😀 Easy to Use**
+### **😀 Easy to Use**
 - Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
-- Built-in [powerful diff visualization tool](#visual-diff-tool) and clean, organized output.
+- Built-in [powerful diff visualization tool](#visual-diff-tool)
+- Clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
 - Clean stack traces with no extra noise.
 
-**🛡 Defensive**
+### **🛡 Defensive**
 - Uncaught errors and unhandled promise rejections will cause the test to fail.
 - Any spec files without tests, or tests without assertions, result in a failed test.
 - Strict and deep equality comparison by default.
 
-**🔒 Out-of-the-box Typescript support**
+### **🔒 Out-of-the-box Typescript support**
 - No special configuration needed, and no plugins to install. 
 - Works great with [c8](https://github.com/bcoe/c8) for code coverage.
 - Handles compilation errors gracefully.
@@ -40,7 +41,7 @@ Fast, minimal, precise, safe, atomic, and easy to use.
 # Quick Examples
 
 ```typescript
-import {test} from '@kitest/kitest';
+import {test} from 'kizu';
 
 // Basic test
 
@@ -89,7 +90,7 @@ test('fetchData()', async (assert) => {
 
 # Getting Started
 
-To install and get started with `kitest`, see our [Getting Started](docs/gettingStarted.md) guide.
+To install and get started with `kizu`, see our [Getting Started](docs/gettingStarted.md) guide.
 
 # Examples
 
@@ -98,7 +99,7 @@ See the [examples](examples) and [src](src) folders for more examples.
 # Support, feedback, and contributions
 
 - Star this repo if you like it!
-- Submit an [issue](https://github.com/mhweiner/kitest/issues) with your problem, feature request or bug report
+- Submit an [issue](https://github.com/mhweiner/kizu/issues) with your problem, feature request or bug report
 - Issue a PR against `main` and request review. Make sure all tests pass and coverage is good.
 - Write about this project in your blog, tweet about it, or share it with your friends!
 
@@ -113,7 +114,7 @@ See the [examples](examples) and [src](src) folders for more examples.
 
 Aeroview is a lightning-fast, developer-friendly, AI-powered logging IDE. Get started for free at [https://aeroview.io](https://aeroview.io).
 
-Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20kitest).
+Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20kizu).
 
 # Other useful libraries
 

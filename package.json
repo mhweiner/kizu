@@ -1,5 +1,5 @@
 {
-  "name": "@kitest/kitest",
+  "name": "kizu",
   "version": "0.0.0-autorel",
   "description": "An easy-to-use, fast, and defensive Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.",
   "license": "MIT",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhweiner/kitest.git"
+    "url": "git+https://github.com/mhweiner/hoare.git"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -26,7 +26,7 @@
     "lint": "eslint ./ --ext .js,.ts",
     "build": "rm -rf ./dist && tsc"
   },
-  "homepage": "https://github.com/mhweiner/kitest",
+  "homepage": "https://github.com/mhweiner/hoare",
   "keywords": [
     "unit test",
     "ts unit test",

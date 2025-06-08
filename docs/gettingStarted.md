@@ -1,13 +1,13 @@
 # Getting Started
 
-Using `kitest` is really easy! Here's a quick guide to get you started.
+Using `kizu` is really easy! Here's a quick guide to get you started.
 
 ## Installation & Setup
 
 ### 1. Install from npm along with peer dependencies
 
 ```console
-npm i -D @kitest/kitest typescript ts-node c8 
+npm i -D kizu typescript ts-node c8 
 ```
 
 - If you're not using Typescript, you can skip the `typescript` and `ts-node` packages.
@@ -51,7 +51,7 @@ Example for Typescript with `c8`:
 
 ```json
 {
-    "test": "c8 kitest 'src/**/*.spec.@(ts|js)' && c8 report -r text -r html"
+    "test": "c8 kizu 'src/**/*.spec.@(ts|js)' && c8 report -r text -r html"
 }
 ```
 
@@ -65,18 +65,18 @@ Simplest example without `c8`:
 
 ```json
 {
-    "test": "kitest 'src/**/*.spec.@(ts|js)'"
+    "test": "kizu 'src/**/*.spec.@(ts|js)'"
 }
 ```
 
-You can customize the `kitest` command to your situation. The string in quotes is a [glob](https://github.com/terkelg/tiny-glob).
+You can customize the `kizu` command to your situation. The string in quotes is a [glob](https://github.com/terkelg/tiny-glob).
 
-## Running kitest via `npx`
+## Running kizu via `npx`
 
 ```bash
 # Run all tests in the src folder with names ending in .spec.ts or .spec.js (glob)
-npx kitest 'src/**/*.spec.ts'
+npx kizu 'src/**/*.spec.ts'
 
 # a specific file
-npx kitest 'src/foo.spec.ts'
+npx kizu 'src/foo.spec.ts'
 ```
