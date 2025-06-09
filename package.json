@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhweiner/hoare.git"
+    "url": "git+https://github.com/mhweiner/kizu.git"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -26,7 +26,7 @@
     "lint": "eslint ./ --ext .js,.ts",
     "build": "rm -rf ./dist && tsc"
   },
-  "homepage": "https://github.com/mhweiner/hoare",
+  "homepage": "https://github.com/mhweiner/kizu",
   "keywords": [
     "unit test",
     "ts unit test",
