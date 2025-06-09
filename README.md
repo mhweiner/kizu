@@ -38,7 +38,9 @@ Designed to help you write simple, readable, and maintainable tests.
 - Works great with [c8](https://github.com/bcoe/c8) for code coverage.
 - Handles compilation errors gracefully.
 
-# Quick Examples
+## Quick Examples
+
+For more examples, see the [examples](examples) and [src](src) folders.
 
 ```typescript
 import {test} from 'kizu';
@@ -75,7 +77,7 @@ test('fetchData()', async (assert) => {
 });
 ```
 
-# Table of Contents
+## Table of Contents
 
 - [Getting Started](docs/gettingStarted.md)
 - [Examples](#examples)
@@ -88,22 +90,19 @@ test('fetchData()', async (assert) => {
 - [Sponsorship](#sponsorship)
 - [License](LICENSE)
 
-# Getting Started
+## Getting Started
 
 To install and get started with `kizu`, see our [Getting Started](docs/gettingStarted.md) guide.
-
-# Examples
-
 See the [examples](examples) and [src](src) folders for more examples.
 
-# Support, feedback, and contributions
+## Support, feedback, and contributions
 
 - Star this repo if you like it!
 - Submit an [issue](https://github.com/mhweiner/kizu/issues) with your problem, feature request or bug report
 - Issue a PR against `main` and request review. Make sure all tests pass and coverage is good.
 - Write about this project in your blog, tweet about it, or share it with your friends!
 
-# Sponsorship
+## Sponsorship
 <br>
 <picture>
     <source srcset="docs/aeroview-white.svg" media="(prefers-color-scheme: dark)">
@@ -116,10 +115,9 @@ Aeroview is a lightning-fast, developer-friendly, AI-powered logging IDE. Get st
 
 Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20kizu).
 
-# Other useful libraries
+## Related projects
 
+- [cjs-mock](https://github.com/mhweiner/cjs-mock): NodeJS module mocking for CJS (CommonJS) modules for unit testing purposes.
 - [autorel](https://github.com/mhweiner/autorel): Automate semantic releases based on conventional commits. Similar to semantic-release but much simpler.
 - [brek](https://github.com/mhweiner/brek): A powerful yet simple configuration library for Node.js. It’s structured, typed, and designed for dynamic configuration loading, making it perfect for securely managing secrets (e.g., AWS Secrets Manager).
 - [jsout](https://github.com/mhweiner/jsout): A Syslog-compatible, small, and simple logger for Typescript/Javascript projects.
-- [cjs-mock](https://github.com/mhweiner/cjs-mock): NodeJS module mocking for CJS (CommonJS) modules for unit testing purposes.
-- [typura](https://github.com/aeroview/typura): Simple and extensible runtime input validation for TS/JS, written in TS.
