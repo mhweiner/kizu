@@ -9,6 +9,9 @@ import {getSpecFiles} from './getSpecFiles';
 const testResultsByFile: TestResultsByFile = {};
 let numCompletedTests = 0;
 
+export type Flags = {
+    failOnly: boolean
+};
 export type TestResultsByFile = {[file: string]: TestResults[]};
 export type FinalResults = {
     numFiles: number
@@ -21,14 +24,14 @@ export type FinalResults = {
 
 const status = ora();
 
-async function start() {
+export async function run(flags: Flags, filesGlob: string) {
 
-    const specFiles = await getSpecFiles();
+    const specFiles = await getSpecFiles(filesGlob);
 
     console.log(`Found ${specFiles.length} spec files.\n`);
     status.start('Running tests...');
     await workerPool(specFiles, addTestResults);
-    finish(specFiles);
+    showResults(flags, specFiles);
 
 }
 
@@ -45,16 +48,14 @@ function addTestResults(file: string, results: TestResults) {
 
 }
 
-function finish(specFiles: string[]) {
+function showResults(flags: Flags, specFiles: string[]) {
 
     status.stop();
 
     const finalResults = calculateFinalResults(specFiles, testResultsByFile);
 
-    printResultsByFile(testResultsByFile);
+    printResultsByFile(testResultsByFile, flags.failOnly);
     printSummary(finalResults);
     if (shouldExitWithError(finalResults)) process.exit(1);
 
 }
-
-start().catch(console.log.bind(console));

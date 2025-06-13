@@ -18,28 +18,39 @@ The following spec files do not have any attempted or completed tests:
 ${files.join(', ')}
 `);
 
-export function printResultsByFile(resultsByFile: TestResultsByFile) {
+export function printResultsByFile(resultsByFile: TestResultsByFile, showOnlyFailures: boolean = false) {
 
     const sortedResults = sortTestResults(resultsByFile);
 
     for (const [filename, tests] of sortedResults) {
 
-        printFileResults(filename, tests);
+        printFileResults(filename, tests, showOnlyFailures);
 
     }
 
 }
 
-export function printFileResults(filename: string, tests: TestResults[]) {
+export function printFileResults(
+    filename: string,
+    tests: TestResults[],
+    showOnlyFailures: boolean = false
+) {
 
-    const doesFileHaveFailures = tests.some((test) => !isTestPassing(test));
-    const header = `${kleur.underline().blue(filename)} ${doesFileHaveFailures ? failureSymbol : successSymbol}\n`;
+    const hasFailure = tests.some((test) => !isTestPassing(test));
+
+    if (showOnlyFailures && !hasFailure) return;
+
+    const header = `${kleur.underline().blue(filename)} ${hasFailure ? failureSymbol : successSymbol}\n`;
 
     log(header);
     tests.forEach(((test) => {
 
+        if (showOnlyFailures && isTestPassing(test)) return;
+
         log(`${test.description} ${isTestPassing(test) ? successSymbol : failureSymbol}`);
         test.assertions.forEach((assertion) => {
+
+            if (showOnlyFailures && assertion.pass) return;
 
             log(kleur.gray(`  ${assertion.description} ${assertion.pass ? successSymbol : failureSymbol}`));
             !assertion.pass && printFailedAssertionDiag(assertion);
