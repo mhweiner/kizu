@@ -45,6 +45,8 @@ For more examples, see the [examples](examples) and [src](src) folders.
 ```bash
 # Run all tests in the src directory and its subdirectories, and only show failures in the output.
 npx kizu 'src/**/*.test.ts' --fail-only
+# Run a specific test file
+npx kizu 'src/example.test.ts'
 ```
 
 ```typescript
@@ -86,7 +88,7 @@ test('fetchData()', async (assert) => {
 
 ## Table of Contents
 
-- [Getting Started](docs/gettingStarted.md)
+- [Quick Start](docs/quickStart.md)
 - [CLI](docs/cli.md)
 - [Test API](docs/api.md)
 - [Visual Diff Tool](docs/visualDiff.md)

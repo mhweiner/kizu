@@ -1,4 +1,4 @@
-# Getting Started
+# Quick Start
 
 Using `kizu` is really easy! Here's a quick guide to get you started.
 
