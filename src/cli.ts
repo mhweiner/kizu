@@ -7,7 +7,7 @@ const program = new Command();
 
 program
     .name('kizu')
-    .version(packageJson.version, '-v, --version')
+    .version(packageJson.version, '--version, -v')
     .description('⚫️ kizu\n\nAn easy-to-use, fast, and defensive Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.')
     .option('--fail-only, -f', 'Only show failures in the output.', false)
     .argument('<glob>', 'Glob pattern to match files to run tests on.')

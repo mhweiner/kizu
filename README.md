@@ -42,7 +42,14 @@ Designed to help you write simple, readable, and maintainable tests.
 
 For more examples, see the [examples](examples) and [src](src) folders.
 
+```bash
+# Run all tests in the src directory and its subdirectories, and only show failures in the output.
+npx kizu 'src/**/*.test.ts' --fail-only
+```
+
 ```typescript
+// example.test.ts
+
 import {test} from 'kizu';
 
 // Basic test
@@ -80,9 +87,10 @@ test('fetchData()', async (assert) => {
 ## Table of Contents
 
 - [Getting Started](docs/gettingStarted.md)
-- [Examples](#examples)
-- [API](docs/api.md)
+- [CLI](docs/cli.md)
+- [Test API](docs/api.md)
 - [Visual Diff Tool](docs/visualDiff.md)
+- [Example Tests](examples)
 - [Best Practices](docs/bestPractices.md)
 - [Inspiration, Philosophy & Attribution](docs/inspiration.md)
 - [FAQ](docs/faq.md)
