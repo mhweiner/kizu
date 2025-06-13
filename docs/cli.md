@@ -12,6 +12,7 @@ npx kizu -f 'src/**/*.test.ts'
 
 - `--fail-only, -f`: Only show failures in the output. This often results in much less output.
 - `--version, -v`: Show version.
+- `--help`: Show help menu.
 
 ## Glob
 
