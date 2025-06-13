@@ -1,7 +1,7 @@
 import glob from 'tiny-glob';
 
-export async function getSpecFiles() {
+export async function getSpecFiles(arg: string) {
 
-    return glob(process.argv[2]);
+    return glob(arg);
 
 }
