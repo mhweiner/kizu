@@ -10,7 +10,7 @@ Good tests act as clear **specifications**. The `{P} C {Q}` structure mirrors ho
 > “A program is a specification of behavior.”  
 > — C. A. R. Hoare
 
-Modern test tools have grown complex, often compensating for design flaws instead of helping reveal them. **Hoare** aims to reverse that — with a minimal API that helps you focus on your code, not the tool.
+Modern test tools have grown complex, often compensating for design flaws instead of helping reveal them. **kizu** aims to reverse that — with a minimal API that helps you focus on your code, not the tool.
 
 > “The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay.”  
 > — C. A. R. Hoare

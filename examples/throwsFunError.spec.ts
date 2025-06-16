@@ -1,4 +1,4 @@
-import {test} from '../src'; // from 'hoare'
+import {test} from '../src'; // from 'kizu'
 import {throwsFunError} from './throwsFunError';
 
 // test with RegExp

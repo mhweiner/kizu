@@ -18,7 +18,7 @@ async function getValidWords() {
 ```
 _isValidWord.spec.ts_
 ```typescript
-import {test} from 'hoare';
+import {test} from 'kizu';
 import {mock} from 'cjs-mock';
 import * as mod from './isValidWord'; // just used for typing
 
