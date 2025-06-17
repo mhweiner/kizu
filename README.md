@@ -22,7 +22,7 @@ Designed to help you write simple, readable, and maintainable tests.
 
 ### **😀 Easy to Use**
 - Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
-- Built-in [powerful diff visualization tool](#visual-diff-tool)
+- Built-in [powerful diff visualization tool](/docs/visualDiff.md)
 - Clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
