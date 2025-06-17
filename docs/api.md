@@ -30,7 +30,7 @@ Create a test. `cb` can return a Promise or be an async, and the test runner wil
 
 > `equal(actual: any, expected: any, msg?: string): void`
 
-Asserts deep and strict equality on objects or primitives. This will give you a [visual diff](#visual-diff-tool) output for any discrepancies. _This should be used for most assertions._
+Asserts deep and strict equality on objects or primitives. This will give you a [visual diff](/docs/visualDiff.md) output for any discrepancies. _This should be used for most assertions._
 
 ---
 
@@ -47,7 +47,7 @@ Asserts that the given function throws an error, matching either:
 
 - No need to manually wrap code in a `try/catch`
 - Supports custom error types and meaningful comparisons
-- Provides [visual diffs](#visual-diff-tool) on mismatch
+- Provides [visual diffs](/docs/visualDiff.md) on mismatch
 
 #### Example
 
@@ -105,7 +105,7 @@ Asserts that the test has failed.
 Asserts that both errors are similar. Stack traces are ignored. It checks for both non-enumerable properties
 (ie, `name` and `message`) and enumerable properties (anything added by extending `Error`).
 
-Under the hood it uses `equal()` and you will get a [visual diff](#visual-diff-tool) output for any discrepancies.
+Under the hood it uses `equal()` and you will get a [visual diff](/docs/visualDiff.md) output for any discrepancies.
 
 Both errors **must** be an instance of `Error`, or an error will be thrown.
 
