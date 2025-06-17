@@ -60,8 +60,8 @@ function greet(name: string): string {
   return `hello, ${name}`;
 }
 
-test('greet()', (assert) => {
-  assert.equal(hello('world'), 'hello, world');
+test('greet', (assert) => {
+  assert.equal(greet('world'), 'hello, world');
 });
 
 // Error handling
@@ -70,7 +70,7 @@ function throwError(): never {
   throw new Error('oops');
 }
 
-test('throwError()', (assert) => {
+test('throwError', (assert) => {
   assert.throws(() => throwError(), /oops/);
 });
 
@@ -80,7 +80,7 @@ async function fetchData(): Promise<string> {
   return Promise.resolve('data');
 }
 
-test('fetchData()', async (assert) => {
+test('fetchData', async (assert) => {
   const data = await fetchData();
   assert.equal(data, 'data');
 });
