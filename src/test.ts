@@ -1,4 +1,4 @@
-import {createAssertionPredicates} from './assertions';
+import {createAssertionPredicates, AssertionAPI} from './assertions';
 import {serializeError, ErrorObject} from 'serialize-error';
 import {toResultAsync} from './lib/toResult';
 
@@ -14,8 +14,6 @@ export type Assertion = {
     diagnostic?: string
     stack?: string
 };
-
-type AssertionAPI = ReturnType<typeof createAssertionPredicates>;
 
 process.on('unhandledRejection', (err: any) => {
 

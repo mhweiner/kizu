@@ -1,8 +1,7 @@
 import {Assertion} from '../test';
-import {toResult} from '../lib/toResult';
-import {errorsEquivalent} from './errorsEquivalent';
+import {isError} from './isError';
 
-export function throws(
+export async function throws(
     assertions: Assertion[],
     experiment: () => any,
     expectedErr: Error|RegExp,
@@ -14,10 +13,36 @@ export function throws(
     if (!(expectedErr instanceof Error) && !(expectedErr instanceof RegExp))
         throw new Error('expectedErr is not an instance of Error or a RegExp');
 
-    const [actualErr] = toResult(experiment);
+    let actualErr: Error | undefined;
 
-    if (!actualErr) throw new Error('experiment did not throw an error');
+    try {
 
-    errorsEquivalent(assertions, actualErr, expectedErr, description || 'throws()');
+        const result = experiment();
+
+        // Check if the result is a Promise
+        if (result && typeof result.then === 'function') {
+
+            // Handle async function - wait for the promise to resolve or reject
+            await result;
+            // If we get here, the promise resolved without throwing
+            throw new Error('experiment did not throw an error');
+
+        }
+        // If we get here, the sync function completed without throwing
+        throw new Error('experiment did not throw an error');
+
+    } catch (e) {
+
+        actualErr = e as Error;
+
+    }
+
+    if (!actualErr) {
+
+        throw new Error('experiment did not throw an error');
+
+    }
+
+    isError(assertions, actualErr, expectedErr, description || 'throws()');
 
 }

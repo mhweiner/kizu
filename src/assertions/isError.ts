@@ -5,7 +5,7 @@ import {pass} from './pass';
 import {AssertionError} from './AssertionError';
 import kleur from 'kleur';
 
-export function errorsEquivalent(
+export function isError(
     assertions: Assertion[],
     actualErr: Error,
     expectedErr: Error|RegExp,

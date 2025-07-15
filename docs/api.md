@@ -14,7 +14,7 @@ Assertions
 - [assert.isFalse()](#assertisfalse)
 - [assert.pass()](#assertpass)
 - [assert.fail()](#assertfail)
-- [assert.errorsEquivalent()](#errorsequivalenterr1-any-err2-any-msg-string)
+- [assert.isError()](#assertiserror)
 
 ## Methods
 
@@ -42,6 +42,8 @@ Asserts that the given function throws an error, matching either:
 
 - A **RegExp**, tested against the error's `.message`
 - An **Error object**, matched deeply using `errorsEquivalent()` (including non-enumerable and custom properties, ignoring stack traces)
+
+Supports both sync and async functions.
 
 #### Why use it?
 
@@ -98,15 +100,23 @@ Asserts that the test has passed.
 
 Asserts that the test has failed.
 
-### `assert.errorsEquivalent()`
+### `assert.isError()`
 
-> `errorsEquivalent(err1: Error, err2: Error, msg?: string)`
+> `isError(err: Error, expected: Error | RegExp, msg?: string)`
 
-Asserts that both errors are similar. Stack traces are ignored. It checks for both non-enumerable properties
-(ie, `name` and `message`) and enumerable properties (anything added by extending `Error`).
+If `expected` is a `RegExp`, it will be tested against the error's `.message`. Otherwise, under the hood it uses `equal()` to compare the errors, except stack traces are ignored.
 
-Under the hood it uses `equal()` and you will get a [visual diff](/docs/visualDiff.md) output for any discrepancies.
+You will get a [visual diff](/docs/visualDiff.md) output for any discrepancies.
 
-Both errors **must** be an instance of `Error`, or an error will be thrown.
+Errors **must** be an instance of `Error`, or an error will be thrown.
 
-> Tip: You may want to use `throws()` instead of this method for convenience, as this will catch the error for you without need to wrap it in a try/catch block, and it also supports RegEx error message matching.
+#### Example
+
+```ts
+import { test } from 'kizu';
+
+test('isError', (assert) => {
+  assert.isError(new Error('expected 42'), /expected/);
+  assert.isError(new Error('expected 42'), new Error('expected 42'));
+});
+```
