@@ -1,20 +1,35 @@
 /* eslint-disable max-lines-per-function */
-export function deepStrictEqual(obj1: any, obj2: any): boolean {
+export function deepStrictEqual(actual: any, expected: any): boolean {
 
-    if (obj1 === obj2) return true;
+    if (actual === expected) return true;
 
-    if (isPrimitive(obj1) && isPrimitive(obj2)) return obj1 === obj2;
-    if (Array.isArray(obj1) !== Array.isArray(obj2)) return false;
-    if (typeof obj1 !== typeof obj2) return false;
-    if (obj1 === null || obj2 === null) return false;
+    // Handle RegExp comparison - expected can be RegExp, actual should be string
+    if (expected instanceof RegExp) {
+
+        if (typeof actual !== 'string') return false;
+        return expected.test(actual);
+
+    }
+
+    // Handle case where actual is RegExp but expected is not RegExp
+    if (actual instanceof RegExp && !(expected instanceof RegExp)) {
+
+        return false;
+
+    }
+
+    if (isPrimitive(actual) && isPrimitive(expected)) return actual === expected;
+    if (Array.isArray(actual) !== Array.isArray(expected)) return false;
+    if (typeof actual !== typeof expected) return false;
+    if (actual === null || expected === null) return false;
 
     // Handle Map objects
-    if (obj1 instanceof Map && obj2 instanceof Map) {
+    if (actual instanceof Map && expected instanceof Map) {
 
-        if (obj1.size !== obj2.size) return false;
-        for (const [key, value] of obj1) {
+        if (actual.size !== expected.size) return false;
+        for (const [key, value] of actual) {
 
-            if (!obj2.has(key) || !deepStrictEqual(value, obj2.get(key))) return false;
+            if (!expected.has(key) || !deepStrictEqual(value, expected.get(key))) return false;
 
         }
         return true;
@@ -22,14 +37,14 @@ export function deepStrictEqual(obj1: any, obj2: any): boolean {
     }
 
     // Handle Set objects
-    if (obj1 instanceof Set && obj2 instanceof Set) {
+    if (actual instanceof Set && expected instanceof Set) {
 
-        if (obj1.size !== obj2.size) return false;
-        for (const item of obj1) {
+        if (actual.size !== expected.size) return false;
+        for (const item of actual) {
 
             let matchFound = false;
 
-            for (const item2 of obj2) {
+            for (const item2 of expected) {
 
                 if (deepStrictEqual(item, item2)) {
 
@@ -47,15 +62,15 @@ export function deepStrictEqual(obj1: any, obj2: any): boolean {
     }
 
     // Handle object comparison
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
+    const keys1 = Object.keys(actual);
+    const keys2 = Object.keys(expected);
 
     if (keys1.length !== keys2.length) return false;
 
     for (const key of keys1) {
 
-        if (!Object.prototype.hasOwnProperty.call(obj2, key)) return false;
-        if (!deepStrictEqual(obj1[key], obj2[key])) return false;
+        if (!Object.prototype.hasOwnProperty.call(expected, key)) return false;
+        if (!deepStrictEqual(actual[key], expected[key])) return false;
 
     }
 

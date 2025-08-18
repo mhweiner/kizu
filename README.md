@@ -22,6 +22,7 @@ Designed to help you write simple, readable, and maintainable tests.
 
 ### **😀 Easy to Use**
 - Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
+- **One assertion method does it all**: `assert.equal()` handles primitives, objects, arrays, Maps, Sets, and even RegExp pattern matching!
 - Built-in [powerful diff visualization tool](/docs/visualDiff.md)
 - Clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
@@ -37,6 +38,20 @@ Designed to help you write simple, readable, and maintainable tests.
 - No special configuration needed, and no plugins to install. 
 - Works great with [c8](https://github.com/bcoe/c8) for code coverage.
 - Handles compilation errors gracefully.
+
+### **✨ Powerful `assert.equal()` - One Assertion to Rule Them All**
+The `assert.equal()` method is incredibly versatile and handles most of your testing needs:
+
+- **Primitive comparison**: Numbers, strings, booleans, null, undefined
+- **Deep object equality**: Compares nested objects, arrays, Maps, and Sets
+- **RegExp pattern matching**: Test string values against RegExp patterns in the expected value
+- **Mixed comparisons**: Combine exact values and RegExp patterns in the same object
+- **Visual diffs**: Beautiful, detailed output when assertions fail
+- **Type safety**: Full TypeScript support with proper type checking
+
+Note: `assert.equal()` compares values by value (deep equality), not by reference.
+
+This single assertion method eliminates the need for multiple specialized assertion methods or complex mocking while providing powerful, flexible testing capabilities.
 
 ## Quick Examples
 
@@ -55,7 +70,6 @@ npx kizu 'src/example.test.ts'
 import {test} from 'kizu';
 
 // Basic test
-
 function greet(name: string): string {
   return `hello, ${name}`;
 }
@@ -64,8 +78,73 @@ test('greet', (assert) => {
   assert.equal(greet('world'), 'hello, world');
 });
 
-// Error handling
+// Deep object comparison
+test('user object', (assert) => {
+  const actual = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+    preferences: {
+      theme: 'dark',
+      notifications: true
+    }
+  };
+  
+  const expected = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+    preferences: {
+      theme: 'dark',
+      notifications: true
+    }
+  };
+  
+  assert.equal(actual, expected); // Deep equality comparison
+});
 
+// RegExp pattern matching ✨ NEW!
+test('email validation', (assert) => {
+  const email = 'user@example.com';
+  
+  // Match email pattern
+  assert.equal(email, /^[^@]+@[^@]+\.[^@]+$/);
+  
+  // Match domain
+  assert.equal(email, /@example\.com$/);
+  
+  // Match username
+  assert.equal(email, /^user@/);
+});
+
+// Complex data structures
+test('complex data', (assert) => {
+  const actual = {
+    users: [
+      { name: 'Alice', email: 'alice@company.com' },
+      { name: 'Bob', email: 'bob@company.com' }
+    ],
+    metadata: {
+      count: 2,
+      lastUpdated: '2024-01-15'
+    }
+  };
+  
+  const expected = {
+    users: [
+      { name: 'Alice', email: /@company\.com$/ }, // RegExp in nested objects!
+      { name: 'Bob', email: /@company\.com$/ }
+    ],
+    metadata: {
+      count: 2,
+      lastUpdated: /^\d{4}-\d{2}-\d{2}$/ // Date pattern
+    }
+  };
+  
+  assert.equal(actual, expected);
+});
+
+// Error handling
 function throwError(): never {
   throw new Error('oops');
 }
@@ -75,7 +154,6 @@ test('throwError', (assert) => {
 });
 
 // Async test
-
 async function fetchData(): Promise<string> {
   return Promise.resolve('data');
 }
@@ -104,6 +182,24 @@ test('fetchData', async (assert) => {
 
 To install and get started with `kizu`, see our [Getting Started](docs/gettingStarted.md) guide.
 See the [examples](examples) and [src](src) folders for more examples.
+
+## Why `assert.equal()` is Amazing
+
+With just one assertion method, you can test:
+
+✅ **Simple values**: `assert.equal(42, 42)`
+✅ **Complex objects**: Deep comparison of nested structures
+✅ **Pattern matching**: `assert.equal('user@example.com', /@example\.com$/)`
+✅ **Mixed data**: Combine exact values and RegExp patterns
+✅ **Collections**: Arrays, Maps, and Sets with full deep equality
+✅ **Beautiful failures**: Visual diffs show exactly what's different
+
+No need to learn multiple assertion methods or complex APIs. `assert.equal()` handles it all with elegance and power!
+
+```typescript
+// One assertion method to rule them all! ✨
+assert.equal(actual, expected);
+```
 
 ## Support, feedback, and contributions
 

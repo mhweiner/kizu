@@ -215,3 +215,92 @@ test('deepStrictEqual() returns false when comparing array to object with same n
     assert.equal(deepStrictEqual(obj, arr), false);
 
 });
+
+test('deepStrictEqual() returns true when string matches RegExp pattern', (assert) => {
+
+    assert.equal(deepStrictEqual('hello world', /hello/), true);
+    assert.equal(deepStrictEqual('hello world', /world$/), true);
+    assert.equal(deepStrictEqual('hello world', /^hello/), true);
+    assert.equal(deepStrictEqual('hello world', /hello.*world/), true);
+    assert.equal(deepStrictEqual('test123', /\d+/), true);
+    assert.equal(deepStrictEqual('test@example.com', /@/), true);
+
+});
+
+test('deepStrictEqual() returns false when string does not match RegExp pattern', (assert) => {
+
+    assert.equal(deepStrictEqual('hello world', /^world/), false);
+    assert.equal(deepStrictEqual('hello world', /world$/), true); // This should pass
+    assert.equal(deepStrictEqual('hello world', /^hello$/), false);
+    assert.equal(deepStrictEqual('hello world', /goodbye/), false);
+    assert.equal(deepStrictEqual('test', /\d+/), false);
+    assert.equal(deepStrictEqual('test@example.com', /^[^@]+$/), false);
+
+});
+
+test('deepStrictEqual() returns false when actual is not a string but expected is RegExp', (assert) => {
+
+    assert.equal(deepStrictEqual(123, /hello/), false);
+    assert.equal(deepStrictEqual(true, /hello/), false);
+    assert.equal(deepStrictEqual(null, /hello/), false);
+    assert.equal(deepStrictEqual(undefined, /hello/), false);
+    assert.equal(deepStrictEqual({}, /hello/), false);
+    assert.equal(deepStrictEqual([], /hello/), false);
+    assert.equal(deepStrictEqual(new Map(), /hello/), false);
+    assert.equal(deepStrictEqual(new Set(), /hello/), false);
+
+});
+
+test('deepStrictEqual() returns false when actual is RegExp but expected is not RegExp', (assert) => {
+
+    // Since we only accept RegExp in expected parameter, actual RegExp should be treated as non-string
+    assert.equal(deepStrictEqual(/hello/, 'hello'), false);
+    assert.equal(deepStrictEqual(/hello/, 123), false);
+    assert.equal(deepStrictEqual(/hello/, {}), false);
+
+});
+
+test('deepStrictEqual() returns false when both are RegExp objects', (assert) => {
+
+    // Since we only accept RegExp in expected parameter, RegExp-to-RegExp comparison should fail
+    assert.equal(deepStrictEqual(/hello/, /hello/), false);
+    assert.equal(deepStrictEqual(/hello/g, /hello/g), false);
+    assert.equal(deepStrictEqual(/hello/i, /hello/i), false);
+
+});
+
+test('deepStrictEqual() returns false when RegExp objects have different patterns', (assert) => {
+
+    // Since we only accept RegExp in expected parameter, RegExp-to-RegExp comparison should fail
+    assert.equal(deepStrictEqual(/hello/, /world/), false);
+    assert.equal(deepStrictEqual(/hello/g, /hello/), false);
+    assert.equal(deepStrictEqual(/hello/i, /hello/g), false);
+
+});
+
+test('deepStrictEqual() handles RegExp in nested objects', (assert) => {
+
+    const actual = {name: 'john', email: 'john@example.com'};
+    const expected = {name: /john/, email: /@example\.com$/};
+
+    assert.equal(deepStrictEqual(actual, expected), true);
+
+});
+
+test('deepStrictEqual() handles RegExp in nested objects with mixed types', (assert) => {
+
+    const actual = {name: 'john', age: 30, email: 'john@example.com'};
+    const expected = {name: /john/, age: 30, email: /@example\.com$/};
+
+    assert.equal(deepStrictEqual(actual, expected), true);
+
+});
+
+test('deepStrictEqual() returns false for nested objects when RegExp does not match', (assert) => {
+
+    const actual = {name: 'john', email: 'john@example.com'};
+    const expected = {name: /jane/, email: /@example\.com$/};
+
+    assert.equal(deepStrictEqual(actual, expected), false);
+
+});
