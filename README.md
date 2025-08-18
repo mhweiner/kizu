@@ -183,24 +183,6 @@ test('fetchData', async (assert) => {
 To install and get started with `kizu`, see our [Getting Started](docs/gettingStarted.md) guide.
 See the [examples](examples) and [src](src) folders for more examples.
 
-## Why `assert.equal()` is Amazing
-
-With just one assertion method, you can test:
-
-✅ **Simple values**: `assert.equal(42, 42)`
-✅ **Complex objects**: Deep comparison of nested structures
-✅ **Pattern matching**: `assert.equal('user@example.com', /@example\.com$/)`
-✅ **Mixed data**: Combine exact values and RegExp patterns
-✅ **Collections**: Arrays, Maps, and Sets with full deep equality
-✅ **Beautiful failures**: Visual diffs show exactly what's different
-
-No need to learn multiple assertion methods or complex APIs. `assert.equal()` handles it all with elegance and power!
-
-```typescript
-// One assertion method to rule them all! ✨
-assert.equal(actual, expected);
-```
-
 ## Support, feedback, and contributions
 
 - Star this repo if you like it!
