@@ -3,11 +3,20 @@
   "version": "0.0.0-autorel",
   "description": "An easy-to-use, fast, and defensive Typescript/Javascript test runner designed to help you to write simple, readable, and maintainable tests.",
   "license": "MIT",
-  "main": "./dist/index.js",
+  "type": "module",
+  "main": "./dist/cjs/src/index.js",
+  "module": "./dist/esm/src/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/src/index.js",
+      "require": "./dist/cjs/src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "bin": {
     "kizu": "bin/cli.js"
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/esm/src/index.d.ts",
   "files": [
     "bin",
     "dist",
@@ -24,7 +33,9 @@
     "prepare": "npm run build",
     "test": "npm run build && c8 ./bin/cli.js '@(examples|src)/**/*.spec.@(ts|js)' && c8 report -r text -r html",
     "lint": "eslint ./ --ext .js,.ts",
-    "build": "rm -rf ./dist && tsc"
+    "build": "rm -rf ./dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --project tsconfig.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json"
   },
   "homepage": "https://github.com/mhweiner/kizu",
   "keywords": [
@@ -40,6 +51,7 @@
     "node-tap"
   ],
   "dependencies": {
+    "chalk": "4.1.2",
     "commander": "14.0.0",
     "deep-object-diff": "^1.1.0",
     "diff": "^5.0.0",

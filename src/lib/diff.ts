@@ -1,6 +1,6 @@
 import {diff as diffObj} from 'deep-object-diff';
 import {diffChars as diffStr} from 'diff';
-import kleur from 'kleur';
+import chalk from 'chalk';
 import {inspect} from 'node:util';
 
 export function getDiff(actual: any, expected: any) {
@@ -29,8 +29,8 @@ export function getDiff(actual: any, expected: any) {
 export function stringVisualDiff(actual: string, expected: string) {
 
     return diffStr(actual, expected).reduce((str, part) => str + (
-        part.added ? kleur.bgGreen().black(part.value) : part.removed
-            ? kleur.bgRed().white(part.value) : kleur.white(part.value)
+        part.added ? chalk.bgGreen.black(part.value) : part.removed
+            ? chalk.bgRed.white(part.value) : chalk.white(part.value)
     ), '');
 
 }

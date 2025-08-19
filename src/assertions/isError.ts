@@ -1,9 +1,9 @@
 import {serializeError} from 'serialize-error';
-import {Assertion} from '../test';
-import {equal} from './equal';
-import {pass} from './pass';
-import {AssertionError} from './AssertionError';
-import kleur from 'kleur';
+import {Assertion} from '../test.js';
+import {equal} from './equal.js';
+import {pass} from './pass.js';
+import {AssertionError} from './AssertionError.js';
+import chalk from 'chalk';
 
 export function isError(
     assertions: Assertion[],
@@ -73,8 +73,8 @@ export function createDiagnosticRegexMismatch(
     expectedRegEx: RegExp
 ): string {
 
-    const actual = `${kleur.grey().bold('Actual Error Message:')}\n\n${actualErrMsg}`;
-    const expected = `\n\n${kleur.grey().bold('Expected RegEx:')}\n\n${expectedRegEx}`;
+    const actual = `${chalk.gray.bold('Actual Error Message:')}\n\n${actualErrMsg}`;
+    const expected = `\n\n${chalk.gray.bold('Expected RegEx:')}\n\n${expectedRegEx}`;
 
     return `${actual}${expected}\n\n`;
 

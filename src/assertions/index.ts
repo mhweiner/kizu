@@ -1,11 +1,11 @@
-import {Assertion} from '../test';
-import {isError} from './isError';
-import {equal} from './equal';
-import {throws} from './throws';
-import {isTrue} from './isTrue';
-import {isFalse} from './isFalse';
-import {fail} from './fail';
-import {pass} from './pass';
+import {Assertion} from '../test.js';
+import {isError} from './isError.js';
+import {equal} from './equal.js';
+import {throws} from './throws.js';
+import {isTrue} from './isTrue.js';
+import {isFalse} from './isFalse.js';
+import {fail} from './fail.js';
+import {pass} from './pass.js';
 
 export type AssertionAPI = {
     pass: (description?: string) => void

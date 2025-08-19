@@ -1,4 +1,4 @@
-import {TestResults} from './test';
+import {TestResults} from './test.js';
 
 /**
  * All assertions must pass, with no errors, and at least one assertion.

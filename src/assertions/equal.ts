@@ -1,9 +1,9 @@
-import {Assertion} from '../test';
-import {deepStrictEqual} from '../lib/deepStrictEqual';
+import {Assertion} from '../test.js';
+import {deepStrictEqual} from '../lib/deepStrictEqual.js';
 import * as util from 'util';
-import kleur from 'kleur';
-import {AssertionError} from './AssertionError';
-import {getDiff} from '../lib/diff';
+import chalk from 'chalk';
+import {AssertionError} from './AssertionError.js';
+import {getDiff} from '../lib/diff.js';
 
 export function equal(assertions: Assertion[], actual: any, expected: any, description?: string) {
 
@@ -30,9 +30,9 @@ function createDiagnostic(actual: any, expected: any) {
     const actualStr = util.inspect(actual, {colors: true, depth: null});
     const expectedStr = util.inspect(expected, {colors: true, depth: null});
 
-    const sectionActual = `${kleur.grey().bold('Actual:')}\n\n${actualStr}`;
-    const sectionExpected = `\n\n${kleur.grey().bold('Expected:')}\n\n${expectedStr}`;
-    const sectionDiff = diff && `\n\n${kleur.grey().bold('Diff:')}\n\n${diff}`;
+    const sectionActual = `${chalk.gray.bold('Actual:')}\n\n${actualStr}`;
+    const sectionExpected = `\n\n${chalk.gray.bold('Expected:')}\n\n${expectedStr}`;
+    const sectionDiff = diff && `\n\n${chalk.gray.bold('Diff:')}\n\n${diff}`;
 
     return `${sectionActual}${sectionExpected}${sectionDiff}\n`;
 

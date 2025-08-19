@@ -1,6 +1,6 @@
-import {createAssertionPredicates, AssertionAPI} from './assertions';
+import {createAssertionPredicates, AssertionAPI} from './assertions/index.js';
 import {serializeError, ErrorObject} from 'serialize-error';
-import {toResultAsync} from './lib/toResult';
+import {toResultAsync} from './lib/toResult.js';
 
 export type TestResults = {
     description: string

@@ -1,10 +1,10 @@
-import {TestResults} from './test';
+import {TestResults} from './test.js';
 import ora from 'ora';
-import {printResultsByFile, printSummary} from './output';
-import {calculateFinalResults} from './calculateFinalResults';
-import {workerPool} from './workerPool';
-import {shouldExitWithError} from './shouldExitWithError';
-import {getSpecFiles} from './getSpecFiles';
+import {printResultsByFile, printSummary} from './output.js';
+import {calculateFinalResults} from './calculateFinalResults.js';
+import {workerPool} from './workerPool.js';
+import {shouldExitWithError} from './shouldExitWithError.js';
+import {getSpecFiles} from './getSpecFiles.js';
 
 const testResultsByFile: TestResultsByFile = {};
 let numCompletedTests = 0;

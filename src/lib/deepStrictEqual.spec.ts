@@ -1,5 +1,5 @@
-import {test} from '../test';
-import {deepStrictEqual} from './deepStrictEqual';
+import {test} from '../test.js';
+import {deepStrictEqual} from './deepStrictEqual.js';
 
 test('deepStrictEqual() returns true for primitives that are strictly equal', (assert) => {
 

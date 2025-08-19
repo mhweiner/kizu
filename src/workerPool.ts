@@ -1,7 +1,7 @@
 import {cpus} from 'os';
 import {fork} from 'child_process';
-import {TestResults} from './test';
-import {toResult} from './lib/toResult';
+import {TestResults} from './test.js';
+import {toResult} from './lib/toResult.js';
 
 const numCores = cpus().length; // will be the size of our worker pool
 

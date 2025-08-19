@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
-import {isTestPassing} from './isTestPassing';
-import {test} from './test';
+import {test} from './test.js';
+import {isTestPassing} from './isTestPassing.js';
 import {serializeError} from 'serialize-error';
 
 test('isTestPassing()', (assert) => {

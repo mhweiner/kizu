@@ -1,7 +1,7 @@
-import {Assertion} from '../test';
+import {Assertion} from '../test.js';
 import * as util from 'util';
-import kleur from 'kleur';
-import {AssertionError} from './AssertionError';
+import chalk from 'chalk';
+import {AssertionError} from './AssertionError.js';
 
 export function isFalse(assertions: Assertion[], condition: boolean, description?: string) {
 
@@ -26,7 +26,7 @@ function createDiagnostic(actual: any) {
 
     const actualStr = util.inspect(actual, {colors: true, depth: null});
 
-    const sectionActual = `${kleur.grey().bold('Actual:')}\n\n${actualStr}`;
+    const sectionActual = `${chalk.gray.bold('Actual:')}\n\n${actualStr}`;
 
     return `${sectionActual}\n`;
 

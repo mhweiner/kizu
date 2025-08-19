@@ -1,16 +1,16 @@
-import kleur from 'kleur';
-import {TestResultsByFile, FinalResults} from './run';
-import {isTestPassing} from './isTestPassing';
-import {Assertion, TestResults} from './test';
+import chalk from 'chalk';
+import {TestResultsByFile, FinalResults} from './run.js';
+import {isTestPassing} from './isTestPassing.js';
+import {Assertion, TestResults} from './test.js';
 import {deserializeError, ErrorObject} from 'serialize-error';
-import {sortTestResults} from './sortTestResults';
+import {sortTestResults} from './sortTestResults.js';
 
 const log = console.log;
-const successSymbol = kleur.green('✔');
-const failureSymbol = kleur.red('✖');
-const hr = kleur.gray('\n────────────────────────────────\n');
+const successSymbol = chalk.green('✔');
+const failureSymbol = chalk.red('✖');
+const hr = chalk.gray('\n────────────────────────────────\n');
 
-const noTestErrorTpl = (files: string[]) => kleur.red().bold(`
+const noTestErrorTpl = (files: string[]) => chalk.red.bold(`
 Error: ${files.length} spec file(s) have no tests. This could indicate a compilation error 
 (ie. Typescript), or an early runtime error. All spec files must have at least one test. 
 The following spec files do not have any attempted or completed tests:
@@ -40,7 +40,7 @@ export function printFileResults(
 
     if (showOnlyFailures && !hasFailure) return;
 
-    const header = `${kleur.underline().blue(filename)} ${hasFailure ? failureSymbol : successSymbol}\n`;
+    const header = `${chalk.underline.blue(filename)} ${hasFailure ? failureSymbol : successSymbol}\n`;
 
     log(header);
     tests.forEach(((test) => {
@@ -52,7 +52,7 @@ export function printFileResults(
 
             if (showOnlyFailures && assertion.pass) return;
 
-            log(kleur.gray(`  ${assertion.description} ${assertion.pass ? successSymbol : failureSymbol}`));
+            log(chalk.gray(`  ${assertion.description} ${assertion.pass ? successSymbol : failureSymbol}`));
             !assertion.pass && printFailedAssertionDiag(assertion);
 
         });
@@ -77,7 +77,7 @@ function printFailedAssertionDiag(assertion: Assertion) {
 
     log(hr);
     assertion.diagnostic && log(assertion.diagnostic);
-    assertion.stack && log(kleur.grey(filterStackTrace(assertion.stack)));
+    assertion.stack && log(chalk.gray(filterStackTrace(assertion.stack)));
     log(hr);
 
 }
@@ -90,21 +90,21 @@ export function printSummary(finalResults: FinalResults) {
 
     if (assertionSuccessRate === 1) {
 
-        log(kleur.bold().green(`${successSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
+        log(chalk.bold.green(`${successSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
 
     } else {
 
-        log(kleur.bold().red(`${failureSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
+        log(chalk.bold.red(`${failureSymbol} ${finalResults.numSuccessfulAssertions}/${finalResults.numAssertions} assertions passed`));
 
     }
 
     if (successRate === 1) {
 
-        log(kleur.bold().green(`${successSymbol} ${finalResults.numSuccessfulTests}/${finalResults.numTests} tests passed`));
+        log(chalk.bold.green(`${successSymbol} ${finalResults.numSuccessfulTests}/${finalResults.numTests} tests passed`));
 
     } else {
 
-        log(kleur.bold().red(`${failureSymbol} ${finalResults.numSuccessfulTests}/${finalResults.numTests} tests passed`));
+        log(chalk.bold.red(`${failureSymbol} ${finalResults.numSuccessfulTests}/${finalResults.numTests} tests passed`));
 
     }
 

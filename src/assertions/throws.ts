@@ -1,5 +1,5 @@
-import {Assertion} from '../test';
-import {isError} from './isError';
+import {Assertion} from '../test.js';
+import {isError} from './isError.js';
 
 export async function throws(
     assertions: Assertion[],
