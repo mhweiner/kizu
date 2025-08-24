@@ -36,6 +36,7 @@ Designed to help you write simple, readable, and maintainable tests.
 
 ### **🔒 Out-of-the-box Typescript support**
 - No special configuration needed, and no plugins to install. 
+- Automatically detects and uses your project's TypeScript runtime (`tsx` recommended, `ts-node` fallback).
 - Works great with [c8](https://github.com/bcoe/c8) for code coverage.
 - Handles compilation errors gracefully.
 
@@ -52,6 +53,27 @@ The `assert.equal()` method is incredibly versatile and handles most of your tes
 Note: `assert.equal()` compares values by value (deep equality), not by reference.
 
 This single assertion method eliminates the need for multiple specialized assertion methods or complex mocking while providing powerful, flexible testing capabilities.
+
+## Installation
+
+```bash
+npm install --save-dev kizu
+```
+
+### TypeScript Support
+
+For TypeScript files, kizu automatically detects and uses your project's TypeScript runtime:
+
+- **Recommended**: `tsx` (faster)
+  ```bash
+  npm install --save-dev tsx
+  ```
+- **Fallback**: `ts-node`
+  ```bash
+  npm install --save-dev ts-node
+  ```
+
+kizu will automatically use whichever is available, preferring `tsx` for better performance.
 
 ## Quick Examples
 

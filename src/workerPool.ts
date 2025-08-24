@@ -9,6 +9,33 @@ const numCores = cpus().length; // will be the size of our worker pool
 let numWorkers = 0;
 let currentSpecFileIndex = 0;
 
+function getTypeScriptRuntime(): string[] {
+
+    try {
+
+        // Try to use tsx first (much faster)
+        require.resolve('tsx/cjs');
+        return ['-r', 'tsx/cjs'];
+
+    } catch (error) {
+
+        try {
+
+            // Fallback to ts-node if tsx is not available
+            require.resolve('ts-node/register');
+            return ['-r', 'ts-node/register'];
+
+        } catch (error) {
+
+            // No TypeScript runtime available
+            throw new Error('No TypeScript runtime found. Please install either:\n  npm install --save-dev tsx (recommended, faster)\n  npm install --save-dev ts-node');
+
+        }
+
+    }
+
+}
+
 export function workerPool(
     specFiles: string[],
     addTestResults: (file: string, testResults: TestResults) => void
@@ -24,9 +51,9 @@ export function workerPool(
 
             const file = specFiles[currentSpecFileIndex];
 
-            // Use tsx for TypeScript files (faster than ts-node), regular node for JavaScript files
+            // Use tsx for TypeScript files (faster than ts-node), fallback to ts-node if not available
             const isTypeScript = extname(file) === '.ts';
-            const execArgv = isTypeScript ? ['-r', 'tsx/cjs'] : [];
+            const execArgv = isTypeScript ? getTypeScriptRuntime() : [];
 
             const [err, worker] = toResult(() => fork(file, [], {execArgv}));
 
