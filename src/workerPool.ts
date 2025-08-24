@@ -2,6 +2,7 @@ import {cpus} from 'os';
 import {fork} from 'child_process';
 import {TestResults} from './test';
 import {toResult} from './lib/toResult';
+import {extname} from 'path';
 
 const numCores = cpus().length; // will be the size of our worker pool
 
@@ -22,7 +23,12 @@ export function workerPool(
             if (numWorkers >= numCores) return;
 
             const file = specFiles[currentSpecFileIndex];
-            const [err, worker] = toResult(() => fork(file));
+
+            // Use tsx for TypeScript files (faster than ts-node), regular node for JavaScript files
+            const isTypeScript = extname(file) === '.ts';
+            const execArgv = isTypeScript ? ['-r', 'tsx/cjs'] : [];
+
+            const [err, worker] = toResult(() => fork(file, [], {execArgv}));
 
             if (err) {
 
