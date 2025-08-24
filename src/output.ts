@@ -1,9 +1,9 @@
 import chalk from 'chalk';
-import {TestResultsByFile, FinalResults} from './run.js';
-import {isTestPassing} from './isTestPassing.js';
-import {Assertion, TestResults} from './test.js';
+import {TestResultsByFile, FinalResults} from './run';
+import {isTestPassing} from './isTestPassing';
+import {Assertion, TestResults} from './test';
 import {deserializeError, ErrorObject} from 'serialize-error';
-import {sortTestResults} from './sortTestResults.js';
+import {sortTestResults} from './sortTestResults';
 
 const log = console.log;
 const successSymbol = chalk.green('✔');

@@ -1,8 +1,8 @@
 import {serializeError} from 'serialize-error';
-import {Assertion} from '../test.js';
-import {equal} from './equal.js';
-import {pass} from './pass.js';
-import {AssertionError} from './AssertionError.js';
+import {Assertion} from '../test';
+import {equal} from './equal';
+import {pass} from './pass';
+import {AssertionError} from './AssertionError';
 import chalk from 'chalk';
 
 export function isError(

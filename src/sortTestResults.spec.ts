@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
-import {test, TestResults} from './test.js';
-import {sortTestResults} from './sortTestResults.js';
-import {TestResultsByFile} from './run.js';
+import {test, TestResults} from './test';
+import {sortTestResults} from './sortTestResults';
+import {TestResultsByFile} from './run';
 
 test('sortTestResults should return empty map if there are no test results', (assert) => {
 

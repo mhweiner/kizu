@@ -1,9 +1,9 @@
-import {Assertion} from '../test.js';
-import {deepStrictEqual} from '../lib/deepStrictEqual.js';
+import {Assertion} from '../test';
+import {deepStrictEqual} from '../lib/deepStrictEqual';
 import * as util from 'util';
 import chalk from 'chalk';
-import {AssertionError} from './AssertionError.js';
-import {getDiff} from '../lib/diff.js';
+import {AssertionError} from './AssertionError';
+import {getDiff} from '../lib/diff';
 
 export function equal(assertions: Assertion[], actual: any, expected: any, description?: string) {
 

@@ -1,4 +1,4 @@
-import {FinalResults} from './run.js';
+import {FinalResults} from './run';
 
 export function shouldExitWithError(finalResults: FinalResults) {
 

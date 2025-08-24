@@ -1,5 +1,5 @@
 import {Command} from 'commander';
-import {Flags, run} from './run.js';
+import {Flags, run} from './run';
 
 // Simple package.json import that works for both ESM and CommonJS
 const packageJson = {

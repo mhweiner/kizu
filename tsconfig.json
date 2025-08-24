@@ -2,8 +2,8 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "ES2022",
-    "moduleResolution": "node16",
-    "module": "Node16",
+    "moduleResolution": "node",
+    "module": "ESNext",
     "declaration": true,
     "lib": ["ES2020"],
     "removeComments": false,

@@ -1,6 +1,6 @@
-import {isTestPassing} from './isTestPassing.js';
-import {TestResultsByFile} from './run.js';
-import {TestResults} from './test.js';
+import {isTestPassing} from './isTestPassing';
+import {TestResultsByFile} from './run';
+import {TestResults} from './test';
 
 export function sortTestResults(resultsByFile: TestResultsByFile): Map<string, TestResults[]> {
 

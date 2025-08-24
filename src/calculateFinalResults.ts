@@ -1,5 +1,5 @@
-import {TestResultsByFile} from './run.js';
-import {isTestPassing} from './isTestPassing.js';
+import {TestResultsByFile} from './run';
+import {isTestPassing} from './isTestPassing';
 
 export function calculateFinalResults(specFiles: string[], testResults: TestResultsByFile) {
 

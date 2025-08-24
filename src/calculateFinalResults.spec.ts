@@ -1,8 +1,8 @@
 /* eslint-disable max-lines-per-function */
 
-import {test} from './test.js';
-import {calculateFinalResults} from './calculateFinalResults.js';
-import {TestResultsByFile} from './run.js';
+import {test} from './test';
+import {calculateFinalResults} from './calculateFinalResults';
+import {TestResultsByFile} from './run';
 import {serializeError} from 'serialize-error';
 
 test('4 files, 2/5 tests pass, 1 file without tests, 1 test with error', (assert) => {

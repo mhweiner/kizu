@@ -1,5 +1,5 @@
-import {test} from './test.js';
-import {shouldExitWithError} from './shouldExitWithError.js';
+import {test} from './test';
+import {shouldExitWithError} from './shouldExitWithError';
 
 test('returns false if no files without tests, and all tests pass', (assert) => {
 

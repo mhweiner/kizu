@@ -1,7 +1,7 @@
-import {Assertion} from '../test.js';
+import {Assertion} from '../test';
 import * as util from 'util';
 import chalk from 'chalk';
-import {AssertionError} from './AssertionError.js';
+import {AssertionError} from './AssertionError';
 
 export function isFalse(assertions: Assertion[], condition: boolean, description?: string) {
 

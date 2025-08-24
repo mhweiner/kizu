@@ -1,4 +1,4 @@
-import {Assertion} from '../test.js';
+import {Assertion} from '../test';
 
 export function fail(assertions: Assertion[], description?: string) {
 

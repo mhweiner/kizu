@@ -33,9 +33,10 @@
     "prepare": "npm run build",
     "test": "npm run build && c8 ./bin/cli.js '@(examples|src)/**/*.spec.@(ts|js)' && c8 report -r text -r html",
     "lint": "eslint ./ --ext .js,.ts",
-    "build": "rm -rf ./dist && npm run build:esm && npm run build:cjs",
+    "build": "rm -rf ./dist && npm run build:esm && npm run build:cjs && npm run fix-esm-imports",
     "build:esm": "tsc --project tsconfig.json",
-    "build:cjs": "tsc --project tsconfig.cjs.json"
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "fix-esm-imports": "node fix-imports.js"
   },
   "homepage": "https://github.com/mhweiner/kizu",
   "keywords": [
