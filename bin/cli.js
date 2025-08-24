@@ -6,17 +6,12 @@
 const { existsSync } = require('fs');
 const { resolve } = require('path');
 
-// Try to load the built CLI first (production mode)
-const cjsCliPath = resolve(__dirname, '../dist/cjs/cli.js');
-const esmCliPath = resolve(__dirname, '../dist/esm/cli.js');
+// Try to load the built CLI (production mode)
+const builtCliPath = resolve(__dirname, '../dist/cli.js');
 
-if (existsSync(cjsCliPath)) {
-    // Production mode - use built CJS
-    const { runCLI } = require(cjsCliPath);
-    runCLI();
-} else if (existsSync(esmCliPath)) {
-    // Production mode - use built ESM
-    const { runCLI } = require(esmCliPath);
+if (existsSync(builtCliPath)) {
+    // Production mode - use built CLI
+    const { runCLI } = require(builtCliPath);
     runCLI();
 } else {
     // Development mode - try tsx first, fallback to ts-node
@@ -34,6 +29,7 @@ if (existsSync(cjsCliPath)) {
             process.exit(1);
         }
     }
+    // Only try source in development when built files don't exist
     const { runCLI } = require('../src/cli');
     runCLI();
 }
