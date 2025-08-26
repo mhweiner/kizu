@@ -1,30 +1,24 @@
-# Quick Start
+# Installation & Setup
 
 Using `kizu` is really easy! Here's a quick guide to get you started.
 
-## Installation & Setup
-
-### 1. Install from npm along with peer dependencies
+## 1. Install kizu and c8
 
 ```console
-npm i -D kizu typescript ts-node c8 
+npm i -D kizu c8
 ```
 
-- If you're not using Typescript, you can skip the `typescript` and `ts-node` packages.
-- If you're not using `c8`, you can skip that package as well.
-   
-### 2. (TypeScript Only) Make sure your [tsconfig.json](../tsconfig.json) file has the following compiler options set:
+> Note: `c8` is optional, but recommended for code coverage.
+
+## 2. (TypeScript Only) Make sure your [tsconfig.json](../tsconfig.json) file has source maps enabled:
 
 ```json
 {
-    "module": "CommonJS",
     "sourceMap": true
 }
 ```
 
-> Note: If you are using a different module systems such as ESM, you can create a separate `tsconfig.test.json` file and use the `--project` flag with `tsc` or `ts-node`, or use command line flags.
-
-### 3. (If using c8 for coverage) Create an `.c8rc.json` file in the root of your project (or use another config option), following the [c8 documentation](https://github.com/bcoe/c8). 
+## 3. (c8 only) If using c8 for coverage, create an `.c8rc.json` file in the root of your project (or use another config option), following the [c8 documentation](https://github.com/bcoe/c8). 
 
 Example:
 
@@ -45,7 +39,7 @@ Example:
 
 The above example will include all `.ts` files in the `src` folder, excluding any `.spec.ts` files. You can see our [.c8rc.json](../.c8rc.json) file for reference.
 
-### 4. Set up your test command in your `package.json` file as appropriate for your project.
+## 4. Set up your test command in your `package.json` file as appropriate for your project.
 
 Example for Typescript with `c8`:
 
@@ -71,12 +65,12 @@ Simplest example without `c8`:
 
 You can customize the `kizu` command to your situation. The string in quotes is a [glob](https://github.com/terkelg/tiny-glob).
 
-## Running kizu via `npx`
+Some more examples:
 
 ```bash
-# Run all tests in the src folder with names ending in .spec.ts or .spec.js (glob)
-npx kizu 'src/**/*.spec.ts'
+# Run all tests in the src folder with names ending in .spec.ts or .spec.js (glob) and only show failures in the output.
+npx kizu 'src/**/*.spec.ts' --fail-only
 
-# a specific file
+# a specific file and show all output
 npx kizu 'src/foo.spec.ts'
 ```

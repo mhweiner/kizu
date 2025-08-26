@@ -16,13 +16,40 @@ Instead of using setup() and teardown() or before() and after() methods, it is r
 
 By avoiding the use of setup() and teardown() or before() and after() methods, you can write more focused and reliable unit tests that are easier to understand, maintain, and debug.
 
-If you still need a re-useable function, such as for your integration tests, you can of course just write your own. It's just a function, after all! Why should a framework provide that?
+If you still need a re-useable function, such as for your integration tests, you can of course just write your own. It's just a custom function, after all! Why should a framework need to provide that? For example, you can write a function like this:
 
 ```
 function setup() {
-  // do your dirty deeds
+  // do things that need to be done before each test
 }
 function teardown() {
-  // do your dirty deeds
+  // do things that need to be done after each test
 }
+
+test('test name', (assert) => {
+  setup();
+  assert.equal("hello, world", "hello, world");
+  teardown();
+});
 ```
+
+## Does kizu support ESM?
+
+Yes, kizu supports ESM. See [Module System Support (ESM & CJS)](esm.md) for more details.
+
+## Does kizu support TypeScript?
+
+Yes, kizu supports TypeScript. See [TypeScript Support](typescript.md) for more details.
+
+## Does kizu support code coverage?
+
+Yes, kizu supports code coverage. See [Code Coverage](codeCoverage.md) for more details.
+
+## Why is kizu so fast?
+
+kizu is fast for several reasons:
+
+- It uses a multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. Use on a multicore machine for even better results!
+- It's incredibly lightweight. It's just a few hundred lines of code.
+- It uses `tsx` for fast TypeScript compilation.
+- It's designed to be easy to understand and maintain.
