@@ -11,7 +11,7 @@
 
 Kizu is a screamingly fast, minimalist test runner for TypeScript and JavaScript. It has a small, easy-to-learn API that lets you focus on your tests, not your tooling.
 
-Designed to help you write simple, readable, and maintainable tests.
+Designed to help you write simple, readable, and maintainable tests that do not slow you down.
 
 ## Features
 
