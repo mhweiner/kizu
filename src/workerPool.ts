@@ -23,6 +23,9 @@ function getTypeScriptRuntime(): string[] {
 
             // Fallback to ts-node if tsx is not available
             require.resolve('ts-node/register');
+
+            console.warn('Warning: tsx not found, using ts-node as a fallback. This is slower. We recommend installing tsx (npm install --save-dev tsx) for much faster execution.');
+
             return ['-r', 'ts-node/register'];
 
         } catch (error) {
@@ -33,6 +36,30 @@ function getTypeScriptRuntime(): string[] {
         }
 
     }
+
+}
+
+function createWorker(file: string): any {
+
+    const isTypeScript = extname(file) === '.ts';
+
+    let execArgv: string[] = [];
+
+    if (isTypeScript) {
+
+        execArgv = getTypeScriptRuntime();
+
+    }
+
+    const [err, worker] = toResult(() => fork(file, [], {execArgv}));
+
+    if (err) {
+
+        throw new Error(`failed to create worker for ${file}`);
+
+    }
+
+    return worker;
 
 }
 
@@ -51,15 +78,15 @@ export function workerPool(
 
             const file = specFiles[currentSpecFileIndex];
 
-            // Use tsx for TypeScript files (faster than ts-node), fallback to ts-node if not available
-            const isTypeScript = extname(file) === '.ts';
-            const execArgv = isTypeScript ? getTypeScriptRuntime() : [];
+            let worker: any;
 
-            const [err, worker] = toResult(() => fork(file, [], {execArgv}));
+            try {
 
-            if (err) {
+                worker = createWorker(file);
 
-                return reject(new Error(`failed to create worker for ${file}`));
+            } catch (error) {
+
+                return reject(error);
 
             }
 
@@ -71,7 +98,7 @@ export function workerPool(
                 next();
 
             });
-            worker.on('message', (msg) => addTestResults(file, msg as TestResults));
+            worker.on('message', (msg: any) => addTestResults(file, msg as TestResults));
             next();
 
         }
