@@ -9,21 +9,21 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![AutoRel](https://img.shields.io/badge/%F0%9F%9A%80%20AutoRel-2D4DDE)](https://github.com/mhweiner/autorel)
 
-Kizu is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
+Kizu is a screamingly fast, minimalist test runner for TypeScript and JavaScript. It has a small, easy-to-learn API that lets you focus on your tests, not your tooling.
 
-Designed to help you write simple, readable, and maintainable tests.
+Designed to help you write simple, readable, and maintainable tests that do not slow you down.
 
 ## Features
 
 ### **🚀 Fast & Reliable**
-- Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for best results._
+- Fast, multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for even better results!_
 - Optimized for speed and simplicity.
 - Minimal dependencies.
 
 ### **😀 Easy to Use**
 - Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
-- **One assertion method does it all**: `assert.equal()` handles primitives, objects, arrays, Maps, Sets, and even RegExp pattern matching!
-- Built-in [powerful diff visualization tool](/docs/visualDiff.md)
+- Powerful `assert.equal()` assertion method handles primitives, deep objects, arrays, Maps, Sets, and even RegExp pattern matching. Uses strict equality and comparison by value. Helps keep your tests simple and readable.
+- Built-in [powerful diff visualization tool](/docs/visualDiff.md) to help you debug failed assertions.
 - Clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
@@ -36,22 +36,99 @@ Designed to help you write simple, readable, and maintainable tests.
 
 ### **🔒 Out-of-the-box Typescript support**
 - No special configuration needed, and no plugins to install. 
-- Works great with [c8](https://github.com/bcoe/c8) for code coverage.
+- Automatically detects and uses your project's `tsconfig.json` and uses `tsx` for TypeScript compilation.
+- Works great with [c8](https://github.com/bcoe/c8) for code coverage out of the box (see [getting started](docs/gettingStarted.md)).
 - Handles compilation errors gracefully.
 
-### **✨ Powerful `assert.equal()` - One Assertion to Rule Them All**
-The `assert.equal()` method is incredibly versatile and handles most of your testing needs:
+## Installation
 
-- **Primitive comparison**: Numbers, strings, booleans, null, undefined
-- **Deep object equality**: Compares nested objects, arrays, Maps, and Sets
-- **RegExp pattern matching**: Test string values against RegExp patterns in the expected value
-- **Mixed comparisons**: Combine exact values and RegExp patterns in the same object
-- **Visual diffs**: Beautiful, detailed output when assertions fail
-- **Type safety**: Full TypeScript support with proper type checking
+```bash
+npm i -D kizu
+```
 
-Note: `assert.equal()` compares values by value (deep equality), not by reference.
+**Note:** `tsx` is automatically installed as a peer dependency for TypeScript support. kizu will use it for fast TypeScript compilation.
 
-This single assertion method eliminates the need for multiple specialized assertion methods or complex mocking while providing powerful, flexible testing capabilities.
+## Module System Support (ESM & CJS)
+
+kizu works seamlessly with both **CommonJS (CJS)** and **ES Modules (ESM)** projects. Here's how it handles different module systems:
+
+### **How It Works**
+
+kizu uses a **hybrid approach** that gives you the best of both worlds:
+
+- **Test Runner**: Runs in CommonJS mode for maximum compatibility
+- **Your Test Code**: Can use any module system (CJS or ESM)
+- **TypeScript Compilation**: Uses `tsx` for fast TypeScript compilation
+
+### **ESM Projects**
+
+If your project uses ESM (`"type": "module"` in package.json):
+
+```typescript
+// test.spec.ts - Your test files can use ESM syntax
+import { test } from 'kizu';
+import { myESMFunction } from './myESMModule.js'; // ESM imports work fine
+
+test('ESM test', (assert) => {
+  const result = myESMFunction();
+  assert.equal(result, 'expected');
+});
+```
+
+**What happens:**
+1. kizu uses `tsx` to compile your TypeScript files to JavaScript
+2. Runs the compiled code (which preserves your ESM imports/exports)
+3. Your ESM code works exactly as expected
+
+### **CJS Projects**
+
+If your project uses CommonJS:
+
+```typescript
+// test.spec.ts - Your test files can use CJS syntax
+import { test } from 'kizu';
+const { myFunction } = require('./myModule'); // CJS imports work fine
+
+test('CJS test', (assert) => {
+  const result = myFunction();
+  assert.equal(result, 'expected');
+});
+```
+
+### **Why This Approach?**
+
+**Benefits:**
+- ✅ **Works everywhere** - No module system conflicts
+- ✅ **Uses your TypeScript setup** - Respects your tsconfig
+- ✅ **No build step needed** - Runs tests immediately
+- ✅ **Predictable behavior** - Same experience across projects
+
+**Technical Details:**
+- kizu uses `tsx` for TypeScript compilation (fast and reliable)
+- This prevents module system conflicts in the test runner
+- Your test code can still use any module system
+- The compilation preserves your original module syntax
+
+### **Mocking Dependencies**
+
+**For CJS modules:** Use [cjs-mock](https://github.com/mhweiner/cjs-mock) for easy dependency mocking:
+
+```typescript
+import { test } from 'kizu';
+import { mock } from 'cjs-mock';
+
+test('mocked test', (assert) => {
+  const mockedModule = mock('./myModule', {
+    './dependency': { someFunction: () => 'mocked' }
+  });
+  
+  assert.equal(mockedModule.doSomething(), 'mocked');
+});
+```
+
+**For ESM modules:** ESM mocking is more complex and not fully supported by most tools. Jest has some ESM mocking capabilities, but they're limited and can be unreliable. For the best testing experience, consider using CJS for modules you need to mock.
+
+If you have any issues running in ESM projects, please [open an issue](https://github.com/mhweiner/kizu/issues).
 
 ## Quick Examples
 

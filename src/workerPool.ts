@@ -2,11 +2,79 @@ import {cpus} from 'os';
 import {fork} from 'child_process';
 import {TestResults} from './test';
 import {toResult} from './lib/toResult';
+import {extname} from 'path';
 
 const numCores = cpus().length; // will be the size of our worker pool
 
 let numWorkers = 0;
 let currentSpecFileIndex = 0;
+
+function getTypeScriptRuntime(): string[] {
+
+    try {
+
+        // Try to use tsx first (much faster)
+        require.resolve('tsx/cjs');
+        return ['-r', 'tsx/cjs'];
+
+    } catch (error) {
+
+        // tsx not found
+        throw new Error('tsx not found. You can install it with `npm install --save-dev tsx`');
+
+    }
+
+}
+
+function createWorker(file: string): any {
+
+    const isTypeScript = extname(file) === '.ts';
+
+    let execArgv: string[] = [];
+
+    if (isTypeScript) {
+
+        execArgv = getTypeScriptRuntime();
+
+    }
+
+    const [err, worker] = toResult(() => fork(file, [], {execArgv}));
+
+    if (err) {
+
+        throw new Error(`failed to create worker for ${file}`);
+
+    }
+
+    return worker;
+
+}
+
+function setupWorker(
+    worker: any,
+    file: string,
+    addTestResults: (file: string, testResults: TestResults) => void,
+    next: () => void,
+    reject: (error: Error) => void
+) {
+
+    worker.on('close', () => {
+
+        numWorkers--;
+        next();
+
+    });
+
+    worker.on('error', (error: Error) => {
+
+        numWorkers--;
+        reject(new Error(`Worker process error for ${file}: ${error.message}`));
+
+    });
+
+    worker.on('message', (msg: any) => addTestResults(file, msg as TestResults));
+
+}
 
 export function workerPool(
     specFiles: string[],
@@ -22,23 +90,23 @@ export function workerPool(
             if (numWorkers >= numCores) return;
 
             const file = specFiles[currentSpecFileIndex];
-            const [err, worker] = toResult(() => fork(file));
 
-            if (err) {
+            let worker: any;
 
-                return reject(new Error(`failed to create worker for ${file}`));
+            try {
+
+                worker = createWorker(file);
+
+            } catch (error) {
+
+                return reject(error);
 
             }
 
             numWorkers++;
             currentSpecFileIndex++;
-            worker.on('close', () => {
 
-                numWorkers--;
-                next();
-
-            });
-            worker.on('message', (msg) => addTestResults(file, msg as TestResults));
+            setupWorker(worker, file, addTestResults, next, reject);
             next();
 
         }

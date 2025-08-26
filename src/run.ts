@@ -30,7 +30,19 @@ export async function run(flags: Flags, filesGlob: string) {
 
     console.log(`Found ${specFiles.length} spec files.\n`);
     status.start('Running tests...');
-    await workerPool(specFiles, addTestResults);
+
+    try {
+
+        await workerPool(specFiles, addTestResults);
+
+    } catch (error) {
+
+        status.stop();
+        console.error('Error:', error instanceof Error ? error.message : error);
+        process.exit(1);
+
+    }
+
     showResults(flags, specFiles);
 
 }
