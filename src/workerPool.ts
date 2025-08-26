@@ -15,7 +15,6 @@ function getTypeScriptRuntime(): string[] {
 
         // Try to use tsx first (much faster)
         require.resolve('tsx/cjs');
-        console.log('Using tsx for TypeScript compilation');
         return ['-r', 'tsx/cjs'];
 
     } catch (error) {
@@ -59,9 +58,8 @@ function setupWorker(
     reject: (error: Error) => void
 ) {
 
-    worker.on('close', (code: number) => {
+    worker.on('close', () => {
 
-        console.log(`Worker for ${file} closed with code: ${code}`);
         numWorkers--;
         next();
 
@@ -69,7 +67,6 @@ function setupWorker(
 
     worker.on('error', (error: Error) => {
 
-        console.error(`Worker for ${file} error:`, error);
         numWorkers--;
         reject(new Error(`Worker process error for ${file}: ${error.message}`));
 
