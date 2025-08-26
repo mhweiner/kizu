@@ -9,21 +9,21 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![AutoRel](https://img.shields.io/badge/%F0%9F%9A%80%20AutoRel-2D4DDE)](https://github.com/mhweiner/autorel)
 
-Kizu is a fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
+Kizu is a screamingly fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
 
 Designed to help you write simple, readable, and maintainable tests.
 
 ## Features
 
 ### **🚀 Fast & Reliable**
-- Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for best results._
+- Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for even better results!_
 - Optimized for speed and simplicity.
 - Minimal dependencies.
 
 ### **😀 Easy to Use**
 - Very simple functional [assertion API](docs/api.md). No need to learn a DSL or framework.
-- **One assertion method does it all**: `assert.equal()` handles primitives, objects, arrays, Maps, Sets, and even RegExp pattern matching!
-- Built-in [powerful diff visualization tool](/docs/visualDiff.md)
+- Powerful `assert.equal()` assertion method handles primitives, deep objects, arrays, Maps, Sets, and even RegExp pattern matching. Uses strict equality and comparison by value. Helps keep your tests simple and readable.
+- Built-in [powerful diff visualization tool](/docs/visualDiff.md) to help you debug failed assertions.
 - Clean, organized output.
 - Failed tests are easy to find, grouped at the end of the output.
 - Errors or unhandled promise rejections are buffered and grouped under the test file in the output. This helps you know where they came from.
@@ -36,42 +36,15 @@ Designed to help you write simple, readable, and maintainable tests.
 
 ### **🔒 Out-of-the-box Typescript support**
 - No special configuration needed, and no plugins to install. 
-- Automatically detects and uses your project's TypeScript runtime (`tsx` recommended, `ts-node` fallback).
-- Works great with [c8](https://github.com/bcoe/c8) for code coverage.
+- Automatically detects and uses your project's `tsconfig.json` and uses `tsx` for TypeScript compilation.
+- Works great with [c8](https://github.com/bcoe/c8) for code coverage out of the box (see [getting started](docs/gettingStarted.md)).
 - Handles compilation errors gracefully.
-
-### **✨ Powerful `assert.equal()` - One Assertion to Rule Them All**
-The `assert.equal()` method is incredibly versatile and handles most of your testing needs:
-
-- **Primitive comparison**: Numbers, strings, booleans, null, undefined
-- **Deep object equality**: Compares nested objects, arrays, Maps, and Sets
-- **RegExp pattern matching**: Test string values against RegExp patterns in the expected value
-- **Mixed comparisons**: Combine exact values and RegExp patterns in the same object
-- **Visual diffs**: Beautiful, detailed output when assertions fail
-- **Type safety**: Full TypeScript support with proper type checking
-
-Note: `assert.equal()` compares values by value (deep equality), not by reference.
-
-This single assertion method eliminates the need for multiple specialized assertion methods or complex mocking while providing powerful, flexible testing capabilities.
 
 ## Installation
 
 ```bash
-npm install --save-dev kizu
+npm i -D kizu
 ```
-
-### TypeScript Support
-
-For TypeScript files, kizu automatically detects and uses your project's TypeScript runtime:
-
-- **Recommended**: `tsx` (faster)
-  ```bash
-  npm install --save-dev tsx
-  ```
-- **Fallback**: `ts-node`
-  ```bash
-  npm install --save-dev ts-node
-  ```
 
 kizu will automatically use whichever is available, preferring `tsx` for better performance.
 
