@@ -46,8 +46,6 @@ Designed to help you write simple, readable, and maintainable tests that do not 
 npm i -D kizu
 ```
 
-kizu will automatically use whichever is available, preferring `tsx` for better performance.
-
 ## Module System Support (ESM & CJS)
 
 kizu works seamlessly with both **CommonJS (CJS)** and **ES Modules (ESM)** projects. Here's how it handles different module systems:
@@ -128,6 +126,8 @@ test('mocked test', (assert) => {
 ```
 
 **For ESM modules:** ESM mocking is more complex and not fully supported by most tools. Jest has some ESM mocking capabilities, but they're limited and can be unreliable. For the best testing experience, consider using CJS for modules you need to mock.
+
+If you have any issues running in ESM projects, please [open an issue](https://github.com/mhweiner/kizu/issues).
 
 ## Quick Examples
 
