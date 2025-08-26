@@ -16,7 +16,7 @@ Designed to help you write simple, readable, and maintainable tests that do not 
 ## Features
 
 ### **🚀 Fast & Reliable**
-- Multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for even better results!_
+- Fast, multi-process parallel test runner. Each test file is run in its own process/runtime for performance and isolation benefits. _Use on a multicore machine for even better results!_
 - Optimized for speed and simplicity.
 - Minimal dependencies.
 
