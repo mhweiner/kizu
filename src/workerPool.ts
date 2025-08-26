@@ -32,9 +32,6 @@ function getTypeScriptRuntime(): string[] {
         } catch (error) {
 
             // No TypeScript runtime available
-            console.error('No TypeScript runtime found. Please install either:');
-            console.error('  npm install --save-dev tsx (recommended, faster)');
-            console.error('  npm install --save-dev ts-node');
             throw new Error('No TypeScript runtime found. Please install either:\n  npm install --save-dev tsx (recommended, faster)\n  npm install --save-dev ts-node');
 
         }
