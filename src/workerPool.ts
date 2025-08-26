@@ -20,21 +20,8 @@ function getTypeScriptRuntime(): string[] {
 
     } catch (error) {
 
-        try {
-
-            // Fallback to ts-node if tsx is not available
-            require.resolve('ts-node/register');
-
-            console.warn('Warning: tsx not found, using ts-node as a fallback. This is slower. We recommend installing tsx (npm install --save-dev tsx) for much faster execution.');
-
-            return ['-r', 'ts-node/register'];
-
-        } catch (error) {
-
-            // No TypeScript runtime available
-            throw new Error('No TypeScript runtime found. Please install either:\n  npm install --save-dev tsx (recommended, faster)\n  npm install --save-dev ts-node');
-
-        }
+        // tsx not found
+        throw new Error('tsx not found. You can install it with `npm install --save-dev tsx`');
 
     }
 

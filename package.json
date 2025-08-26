@@ -58,5 +58,8 @@
     "eslint": "^8.1.0",
     "tsx": "4.20.5",
     "typescript": "^5.5.2"
+  },
+  "peerDependencies": {
+    "tsx": "^4.20.5"
   }
 }
