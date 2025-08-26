@@ -46,6 +46,8 @@ Designed to help you write simple, readable, and maintainable tests that do not 
 npm i -D kizu
 ```
 
+**Note:** `tsx` is automatically installed as a peer dependency for TypeScript support. kizu will use it for fast TypeScript compilation.
+
 ## Module System Support (ESM & CJS)
 
 kizu works seamlessly with both **CommonJS (CJS)** and **ES Modules (ESM)** projects. Here's how it handles different module systems:
@@ -56,7 +58,7 @@ kizu uses a **hybrid approach** that gives you the best of both worlds:
 
 - **Test Runner**: Runs in CommonJS mode for maximum compatibility
 - **Your Test Code**: Can use any module system (CJS or ESM)
-- **TypeScript Compilation**: Uses your project's TypeScript runtime
+- **TypeScript Compilation**: Uses `tsx` for fast TypeScript compilation
 
 ### **ESM Projects**
 
@@ -74,10 +76,9 @@ test('ESM test', (assert) => {
 ```
 
 **What happens:**
-1. kizu detects your TypeScript runtime (`tsx` or `ts-node`)
-2. Compiles your TypeScript files to JavaScript
-3. Runs the compiled code (which preserves your ESM imports/exports)
-4. Your ESM code works exactly as expected
+1. kizu uses `tsx` to compile your TypeScript files to JavaScript
+2. Runs the compiled code (which preserves your ESM imports/exports)
+3. Your ESM code works exactly as expected
 
 ### **CJS Projects**
 
@@ -103,7 +104,7 @@ test('CJS test', (assert) => {
 - ✅ **Predictable behavior** - Same experience across projects
 
 **Technical Details:**
-- kizu uses `tsx/cjs` for TypeScript compilation (forces CJS mode)
+- kizu uses `tsx` for TypeScript compilation (fast and reliable)
 - This prevents module system conflicts in the test runner
 - Your test code can still use any module system
 - The compilation preserves your original module syntax
