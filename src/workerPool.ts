@@ -15,6 +15,7 @@ function getTypeScriptRuntime(): string[] {
 
         // Try to use tsx first (much faster)
         require.resolve('tsx/cjs');
+        console.log('Using tsx for TypeScript compilation');
         return ['-r', 'tsx/cjs'];
 
     } catch (error) {
@@ -31,6 +32,9 @@ function getTypeScriptRuntime(): string[] {
         } catch (error) {
 
             // No TypeScript runtime available
+            console.error('No TypeScript runtime found. Please install either:');
+            console.error('  npm install --save-dev tsx (recommended, faster)');
+            console.error('  npm install --save-dev ts-node');
             throw new Error('No TypeScript runtime found. Please install either:\n  npm install --save-dev tsx (recommended, faster)\n  npm install --save-dev ts-node');
 
         }
@@ -63,6 +67,34 @@ function createWorker(file: string): any {
 
 }
 
+function setupWorker(
+    worker: any,
+    file: string,
+    addTestResults: (file: string, testResults: TestResults) => void,
+    next: () => void,
+    reject: (error: Error) => void
+) {
+
+    worker.on('close', (code: number) => {
+
+        console.log(`Worker for ${file} closed with code: ${code}`);
+        numWorkers--;
+        next();
+
+    });
+
+    worker.on('error', (error: Error) => {
+
+        console.error(`Worker for ${file} error:`, error);
+        numWorkers--;
+        reject(new Error(`Worker process error for ${file}: ${error.message}`));
+
+    });
+
+    worker.on('message', (msg: any) => addTestResults(file, msg as TestResults));
+
+}
+
 export function workerPool(
     specFiles: string[],
     addTestResults: (file: string, testResults: TestResults) => void
@@ -92,13 +124,8 @@ export function workerPool(
 
             numWorkers++;
             currentSpecFileIndex++;
-            worker.on('close', () => {
 
-                numWorkers--;
-                next();
-
-            });
-            worker.on('message', (msg: any) => addTestResults(file, msg as TestResults));
+            setupWorker(worker, file, addTestResults, next, reject);
             next();
 
         }
