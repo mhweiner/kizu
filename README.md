@@ -9,7 +9,7 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![AutoRel](https://img.shields.io/badge/%F0%9F%9A%80%20AutoRel-2D4DDE)](https://github.com/mhweiner/autorel)
 
-Kizu is a screamingly fast, minimalist test runner for TypeScript and JavaScript, with a small, easy-to-learn API that lets you focus on your tests — not your tooling.
+Kizu is a screamingly fast, minimalist test runner for TypeScript and JavaScript. It has a small, easy-to-learn API that lets you focus on your tests, not your tooling.
 
 Designed to help you write simple, readable, and maintainable tests.
 
