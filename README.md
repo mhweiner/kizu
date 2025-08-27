@@ -144,7 +144,7 @@ See the [examples](examples) and [src](src) folders for more examples.
 <picture>
     <source srcset="docs/aeroview-white.svg" media="(prefers-color-scheme: dark)">
     <source srcset="docs/aeroview-black.svg" media="(prefers-color-scheme: light)">
-    <img src="docs/aeroview-black.svg" alt="Logo" height="20">
+    <img src="docs/aeroview-black.svg">
 </picture>
 <br>
 
