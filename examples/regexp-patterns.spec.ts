@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import {test} from '../src/test';
+import {test} from '../src'; // from 'kizu'
 
 test('RegExp pattern matching examples', (assert) => {
 

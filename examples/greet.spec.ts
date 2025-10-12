@@ -1,4 +1,4 @@
-import {test} from '../src'; // from '@kitest/kitest'
+import {test} from '../src'; // from 'kizu'
 import {greet} from './greet';
 
 test('returns expected object', (assert) => {

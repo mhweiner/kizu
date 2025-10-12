@@ -40,6 +40,12 @@ Designed to help you write simple, readable, and maintainable tests that do not 
 - Works great with [c8](https://github.com/bcoe/c8) for code coverage out of the box (see [getting started](docs/gettingStarted.md)).
 - Handles compilation errors gracefully.
 
+### **⚛️ TSX/JSX Support**
+- Full support for TypeScript (TSX) and JavaScript (JSX) files
+- Works with React, Preact, Solid, and other JSX-based frameworks
+- Built-in React Testing Library integration with jsdom environment
+- Type-safe testing with full TypeScript support
+
 ## Quick Examples
 
 For more examples, see the [examples](examples) and [src](src) folders.
@@ -110,12 +116,38 @@ test('fetchData', async (assert) => {
   const data = await fetchData();
   assert.equal(data, 'data');
 });
+
+// React component testing
+import React, { useState } from 'react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+
+function Counter({ initialValue = 0 }) {
+  const [count, setCount] = useState(initialValue);
+  return (
+    <div>
+      <span>Count: {count}</span>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
+  );
+}
+
+test('Counter component', (assert) => {
+  render(<Counter initialValue={5} />);
+  
+  assert.equal(screen.getByText('Count: 5').textContent, 'Count: 5');
+  
+  fireEvent.click(screen.getByText('+'));
+  assert.equal(screen.getByText('Count: 6').textContent, 'Count: 6');
+  
+  cleanup();
+});
 ```
 
 ## Table of Contents
 
 - [Installation & Setup](docs/setup.md)
 - [ESM Support](docs/esm.md)
+- [TSX/JSX Support](docs/react.md)
 - [CLI](docs/cli.md)
 - [Assertion API](docs/api.md)
 - [Visual Diff Tool](docs/visualDiff.md)

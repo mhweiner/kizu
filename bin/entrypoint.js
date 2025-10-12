@@ -2,4 +2,4 @@
 
 const {resolve} = require('path');
 
-require(resolve(__dirname, '../dist/cli.js'));
+require(resolve(__dirname, '../dist/cli.js')).runCLI();
