@@ -19,7 +19,6 @@ if (existsSync(builtCliPath)) {
         require('tsx/cjs').register({
             tsconfig: true  // This tells tsx to read your tsconfig.json
         });
-    tsx.register();
     } catch (error) {
         try {
             // Fallback to ts-node if tsx is not available
