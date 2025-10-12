@@ -17,6 +17,8 @@ if (existsSync(builtCliPath)) {
     // Development mode - try tsx first, fallback to ts-node
     try {
         require('tsx/cjs');
+        // Let tsx read tsconfig.json automatically
+        tsx.register();
     } catch (error) {
         try {
             // Fallback to ts-node if tsx is not available
