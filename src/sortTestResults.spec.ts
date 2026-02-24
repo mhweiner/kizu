@@ -99,5 +99,5 @@ test(
 
         assert.equal(result, expected);
 
-    }
+    },
 );

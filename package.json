@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "bin": {
-    "kizu": "bin/cli.js"
+    "kizu": "bin/entrypoint.js"
   },
   "types": "dist/index.d.ts",
   "files": [
@@ -22,9 +22,10 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "test": "npm run build && c8 ./bin/cli.js '@(examples|src)/**/*.spec.@(ts|js)' && c8 report -r text -r html",
-    "lint": "eslint ./ --ext .js,.ts",
-    "build": "rm -rf ./dist && tsc"
+    "test": "npm run build && node ./bin/entrypoint.js '{src,examples}/**/*.spec.*'",
+    "lint": "eslint . --fix",
+    "build": "rm -rf ./dist && tsc",
+    "validate": "npm run build && npm run lint && npm test"
   },
   "homepage": "https://github.com/mhweiner/kizu",
   "keywords": [
@@ -49,15 +50,19 @@
     "tiny-glob": "^0.2.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/diff": "^5.0.1",
-    "@types/node": "^16.11.6",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "@typescript-eslint/parser": "^5.2.0",
-    "c8": "^7.10.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "cjs-mock": "^0.1.0",
-    "eslint": "^8.1.0",
+    "eslint": "^10.0.0",
+    "jsdom": "^23.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsx": "4.20.5",
-    "typescript": "^5.5.2"
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0"
   },
   "peerDependencies": {
     "tsx": "^4.20.5"

@@ -5,7 +5,7 @@ export async function throws(
     assertions: Assertion[],
     experiment: () => any,
     expectedErr: Error|RegExp,
-    description?: string
+    description?: string,
 ) {
 
     if (typeof experiment !== 'function')

@@ -1,4 +1,4 @@
-import {test} from '../src'; // from '@kitest/kitest'
+import {test} from '../src'; // from 'kizu'
 import {InvalidPhoneNumber, validatePhoneNumber} from './validate';
 
 test('validatePhoneNumber', (assert) => {

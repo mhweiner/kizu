@@ -1,4 +1,4 @@
-import {test} from '../src'; // from '@kitest/kitest'
+import {test} from '../src'; // from 'kizu'
 
 test('custom condition', (assert) => {
 

@@ -13,13 +13,11 @@ function getTypeScriptRuntime(): string[] {
 
     try {
 
-        // Try to use tsx first (much faster)
         require.resolve('tsx/cjs');
         return ['-r', 'tsx/cjs'];
 
-    } catch (error) {
+    } catch {
 
-        // tsx not found
         throw new Error('tsx not found. You can install it with `npm install --save-dev tsx`');
 
     }
@@ -28,7 +26,7 @@ function getTypeScriptRuntime(): string[] {
 
 function createWorker(file: string): any {
 
-    const isTypeScript = extname(file) === '.ts';
+    const isTypeScript = ['.ts', '.tsx'].includes(extname(file));
 
     let execArgv: string[] = [];
 
@@ -55,7 +53,7 @@ function setupWorker(
     file: string,
     addTestResults: (file: string, testResults: TestResults) => void,
     next: () => void,
-    reject: (error: Error) => void
+    reject: (error: Error) => void,
 ) {
 
     worker.on('close', () => {
@@ -78,7 +76,7 @@ function setupWorker(
 
 export function workerPool(
     specFiles: string[],
-    addTestResults: (file: string, testResults: TestResults) => void
+    addTestResults: (file: string, testResults: TestResults) => void,
 ): Promise<void> {
 
     return new Promise((resolve, reject) => {

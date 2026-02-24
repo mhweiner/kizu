@@ -1,7 +1,7 @@
 import {Command} from 'commander';
 import {Flags, run} from './run';
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const packageJson = require('../package.json');
 
 export async function runCLI() {

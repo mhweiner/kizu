@@ -49,7 +49,7 @@ export async function test(description: string, experiment: (assert: AssertionAP
 
 function sendTestResults(results: TestResults) {
 
-    // @ts-ignore
+    // @ts-expect-error - process.send exists in worker context
     process.send(results);
 
 }

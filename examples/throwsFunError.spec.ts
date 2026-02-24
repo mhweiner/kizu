@@ -7,7 +7,7 @@ test('throwsFunError(): throws an error with supercalifragilisticexpialidocious'
 
     assert.throws(
         throwsFunError,
-        /supercalifragilisticexpialidocious/
+        /supercalifragilisticexpialidocious/,
     );
 
 });
@@ -17,7 +17,7 @@ test('throwsFunError(): throws a specific error obj', (assert) => {
 
     assert.throws(
         throwsFunError,
-        new Error('supercalifragilisticexpialidocious is not a function')
+        new Error('supercalifragilisticexpialidocious is not a function'),
     );
 
 });
@@ -26,7 +26,7 @@ test('throwsFunErrorAsync(): throws an error with supercalifragilisticexpialidoc
 
     await assert.throws(
         throwsFunErrorAsync,
-        /supercalifragilisticexpialidocious/
+        /supercalifragilisticexpialidocious/,
     );
 
 });
@@ -37,7 +37,7 @@ test('throwsFunErrorAsync(): throws an error with supercalifragilisticexpialidoc
 
     assert.isError(
         err,
-        /supercalifragilisticexpialidocious/
+        /supercalifragilisticexpialidocious/,
     );
 
 });
@@ -48,7 +48,7 @@ test('throwsFunErrorAsync(): throws specific error obj (using isError)', async (
 
     assert.isError(
         err,
-        new Error('supercalifragilisticexpialidocious is not a function')
+        new Error('supercalifragilisticexpialidocious is not a function'),
     );
 
 });
