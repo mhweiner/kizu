@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const {test} = require('../dist/test'); // require('kizu').test
 const helloworld = require('./helloworld-js');

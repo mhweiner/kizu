@@ -16,7 +16,7 @@ function getTypeScriptRuntime(): string[] {
         require.resolve('tsx/cjs');
         return ['-r', 'tsx/cjs'];
 
-    } catch (error) {
+    } catch {
 
         throw new Error('tsx not found. You can install it with `npm install --save-dev tsx`');
 
@@ -53,7 +53,7 @@ function setupWorker(
     file: string,
     addTestResults: (file: string, testResults: TestResults) => void,
     next: () => void,
-    reject: (error: Error) => void
+    reject: (error: Error) => void,
 ) {
 
     worker.on('close', () => {
@@ -76,7 +76,7 @@ function setupWorker(
 
 export function workerPool(
     specFiles: string[],
-    addTestResults: (file: string, testResults: TestResults) => void
+    addTestResults: (file: string, testResults: TestResults) => void,
 ): Promise<void> {
 
     return new Promise((resolve, reject) => {

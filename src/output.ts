@@ -33,7 +33,7 @@ export function printResultsByFile(resultsByFile: TestResultsByFile, showOnlyFai
 export function printFileResults(
     filename: string,
     tests: TestResults[],
-    showOnlyFailures: boolean = false
+    showOnlyFailures: boolean = false,
 ) {
 
     const hasFailure = tests.some((test) => !isTestPassing(test));
