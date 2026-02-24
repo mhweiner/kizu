@@ -1,12 +1,18 @@
 name: Release
 on:
   push:
-    branches: [main, next]
+    branches:
+      - main
+      - next
+  workflow_dispatch:
+permissions:
+  id-token: write   # Required for npm trusted publishing (OIDC)
+  contents: write   # Required for autorel to push release tag (and changelog)
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    concurrency: 
+    concurrency:
       group: deploy-${{github.ref}}
       cancel-in-progress: true
     steps:
@@ -16,11 +22,11 @@ jobs:
           fetch-tags: true
       - uses: actions/setup-node@v4
         with:
-          node-version: latest
-          registry-url: "https://registry.npmjs.org"
-          cache: "npm"
-      - run: npx autorel@^2
+          node-version: '24'   # npm 11+ required for trusted publishing (OIDC)
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run validate
+      - run: npx autorel@^2 --publish
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        

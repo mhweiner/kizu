@@ -9,7 +9,7 @@ export function isError(
     assertions: Assertion[],
     actualErr: Error,
     expectedErr: Error|RegExp,
-    description?: string
+    description?: string,
 ): void {
 
     if (!(actualErr instanceof Error))
@@ -44,7 +44,7 @@ function compareErrorObjects(
     assertions: Assertion[],
     actualErr: Error,
     expectedErr: Error|RegExp,
-    description?: string
+    description?: string,
 ): void {
 
     if (!(actualErr instanceof Error))
@@ -70,7 +70,7 @@ function compareErrorObjects(
 
 export function createDiagnosticRegexMismatch(
     actualErrMsg: string,
-    expectedRegEx: RegExp
+    expectedRegEx: RegExp,
 ): string {
 
     const actual = `${kleur.grey().bold('Actual Error Message:')}\n\n${actualErrMsg}`;
