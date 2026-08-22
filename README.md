@@ -156,7 +156,6 @@ test('Counter component', (assert) => {
 - [Inspiration, Philosophy & Attribution](docs/inspiration.md)
 - [FAQ](docs/faq.md)
 - [Support, Feedback, and Contributions](#support-feedback-and-contributions)
-- [Sponsorship](#sponsorship)
 - [License](LICENSE)
 
 ## Getting Started
@@ -170,23 +169,3 @@ See the [examples](examples) and [src](src) folders for more examples.
 - Submit an [issue](https://github.com/mhweiner/kizu/issues) with your problem, feature request or bug report
 - Issue a PR against `main` and request review. Make sure all tests pass and coverage is good.
 - Write about this project in your blog, tweet about it, or share it with your friends!
-
-## Sponsorship
-<br>
-<picture>
-    <source srcset="docs/aeroview-white.svg" media="(prefers-color-scheme: dark)">
-    <source srcset="docs/aeroview-black.svg" media="(prefers-color-scheme: light)">
-    <img src="docs/aeroview-black.svg">
-</picture>
-<br>
-
-Aeroview is a lightning-fast, developer-friendly, AI-powered logging IDE. Get started for free at [https://aeroview.io](https://aeroview.io).
-
-Want to sponsor this project? [Reach out](mailto:mhweiner234@gmail.com?subject=I%20want%20to%20sponsor%20kizu).
-
-## Related projects
-
-- [cjs-mock](https://github.com/mhweiner/cjs-mock): NodeJS module mocking for CJS (CommonJS) modules for unit testing purposes.
-- [autorel](https://github.com/mhweiner/autorel): Automate semantic releases based on conventional commits. Similar to semantic-release but much simpler.
-- [brek](https://github.com/mhweiner/brek): A powerful yet simple configuration library for Node.js. It’s structured, typed, and designed for dynamic configuration loading, making it perfect for securely managing secrets (e.g., AWS Secrets Manager).
-- [jsout](https://github.com/mhweiner/jsout): A Syslog-compatible, small, and simple logger for Typescript/Javascript projects.
