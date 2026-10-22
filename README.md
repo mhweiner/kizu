@@ -1,8 +1,10 @@
-<picture>
-    <source srcset="docs/kizu-logo-light.svg" media="(prefers-color-scheme: light)">
-    <source srcset="docs/kizu-logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="docs/kizu-logo-light.svg" alt="Logo">
-</picture>
+<div align="center">
+  <picture>
+    <source srcset="docs/kizu-logo-dark.svg" media="(prefers-color-scheme: dark)" />
+    <source srcset="docs/kizu-logo-light.svg" media="(prefers-color-scheme: light)" />
+    <img src="docs/kizu-logo-light.svg" height="56" alt="kizu" />
+  </picture>
+</div>
 
 [![build status](https://github.com/mhweiner/kizu/actions/workflows/release.yml/badge.svg)](https://github.com/mhweiner/kizu/actions)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
